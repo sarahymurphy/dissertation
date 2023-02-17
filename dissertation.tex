@@ -1,0 +1,97 @@
+% Page number location defaults to bottom-center
+% Use \documentclass[pagenumtop]{wsu-thesis} to get page numbers at top-right
+%email JMcDonald1@wsu.edu for latex help
+\documentclass{wsu-thesis}
+
+% Some packages are already added by the wsu-thesis class
+% Check the wsu-thesis.cls file if you have any issues
+\usepackage{graphicx}
+\graphicspath{{\figuredir/}} %\figuredir defined below
+\usepackage{tensor}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage[numbers]{natbib}
+\usepackage{xcolor} % Remove after notes are no longer needed
+\usepackage{longtable}
+\usepackage{array}
+
+
+% Front matter information
+% Title needs to be inverted pyramid shape, may need manual breaks using \\
+\title{MEASUREMENTS AND MODELING OF ARCTIC ATMOSPHERIC\\PROCESSES DURING THE NORWEGIAN YOUNG SEA ICE\\FIELD CAMPAIGN}
+%Use your full name as it appears on your transcripts}
+\author{Sarah Yvette Murphy}
+%Indicate if it is a Dissertation (doctoral) or Thesis (master's)
+\thesistype{Dissertation}
+%Fill out the full degree name
+\degree{Doctor of Philosophy in Engineering Science}
+%Official name of department, school, program, or college that grants your degree
+\department{Voiland School of Engineering and Architecture, Department of Civil and Environmental Engineering}
+%Fill out the month your degree is awarded, rather than the month you defend.
+\submitmonth{April}
+\submityear{2023}
+
+% Useful definitions
+\newcommand{\phd}{Ph.D.}
+\newcommand{\chapterdir}{./chapters}
+\newcommand{\frontmatterdir}{./front-matter}
+\newcommand{\appendixdir}{./appendices}
+\newcommand{\referencedir}{./references}
+\newcommand{\figuredir}{./figures}
+
+\begin{document}
+% Create title page and blank second page
+% Use \maketitle* if you wish to remove copyright info
+\maketitle
+
+% Create signature page with requisite text
+\begin{signaturepage}
+  % \signature creates line for signature with committee member's full
+  % name and degree.  Make sure you check with each committee member so that you have this correct before you print your  cotton pages.  Comment out or delete extra lines or [Co-chair]
+  \signature{Von P. Walden}{\phd}[Chair]
+  \signature{Stephen Hudson}{\phd}
+  \signature{Brian Lamb}{\phd}
+  \signature{Heping Liu}{\phd}
+  \signature{Hailong Wang}{\phd}
+\end{signaturepage}
+
+% Acknowledgement page is optional, remove if not needed
+% The title can be changed with \begin{acknowledgements}[New Title]
+\begin{acknowledgements}
+  \input{\frontmatterdir/acknowledgements}
+\end{acknowledgements}
+
+% Abstract arguments are degree YOU are earning and committee chair(s) names
+\begin{abstract}{\phd}{Von P. Walden}
+  \input{\frontmatterdir/abstract}
+\end{abstract}
+
+% Remove List of Figures or List of Tables if not needed
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Main chapters
+\begin{mainchapters}
+  \input{\chapterdir/chapter1}
+  \input{\chapterdir/chapter2}
+  \input{\chapterdir/chapter3}
+  \input{\chapterdir/chapter4}
+  \input{\chapterdir/chapter5}
+  \input{\chapterdir/chapter6}
+\end{mainchapters}
+
+% Enter the relative directory for your .bib file here
+% Default title is ``Bibliography'' and can be
+% changed with \makebibliography{bibfile}[New Title]
+\makebibliography{\referencedir/references}
+
+
+% Appendices, remove if not needed
+\begin{appendices}
+  \input{\appendixdir/appendixa}
+  \input{\appendixdir/appendixb}
+  \input{\appendixdir/appendixc}
+\end{appendices}
+
+\end{document} 

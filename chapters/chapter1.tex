@@ -1,0 +1,86 @@
+\chapter{About the Polar Regions}
+
+\noindent \emph{Stronger warming in the Arctic than in the global average has already been observed and its causes are well understood. It is very likely that the warming in the Arctic will be more pronounced than on global average over the 21st century (high confidence).}
+
+\hspace{6 cm} - IPCC Sixth Assessment Report, August 2021
+
+\section{The Arctic and Climate Change}
+The largest impacts of climate change are those seen in the Arctic. Over the past several decades, Arctic temperatures have increased more than the global average by 2.5 \cite{tjernstrom:2014a}, due largely to Arctic amplification \cite{rantanen:2022}. This is a series of mechanisms in which the polar regions undergo positive feedback loops which can change the energy balance at the surface. Arctic amplification includes the ice-albedo effect, which amplifies temperature increases due to greenhouse gas emissions by melting sea ice. As sea ice melts, the albedo of the surface decreases, resulting in more solar energy absorption. As the surface absorbs more solar energy, it warms, increasing Arctic air temperatures, which melts additional sea ice. This is a key example of a positive feedback loop \cite{ipcc_techsum}. A second example of Arctic amplification occurs when permafrost thaws, releasing stored methane into the atmosphere. This increase in atmospheric methane increases the greenhouse effect, further increasing permafrost melt. To fully understand Arctic climate change, it is crucial for scientists to study this region and the physical processes that contribute to Arctic amplification.
+
+Arctic climate change heavily impacts marine life, indigenous people, and coastal ecosystems \cite{ipcc_techsum}. However, these local impacts are not the only thing to be concerned about. Changes in Arctic sea ice can cause irreversible changes in the atmospheric and oceanic circulation. Many CMIP5 models indicate that within the next few years,  the Earth may experience ice free conditions during the summer \cite{stroeve:2018}.
+
+Sea ice has been declining at an increasing rate throughout the last decade due to increased melt seasons replacing multi-year sea ice with thin, first-year sea ice \cite{meier:2014}. Wunderling et al. \cite{wunderling:2020} found that 55 percent of the additional warming in the Arctic was a result of ice-albedo feedback. The rest is attributed to a change in lapse rate and cloud properties resulting in increased surface heating. These changes have resulted in an ice loss of approximately $3.4 \%$ per decade. Multi-year sea ice has decreased from $59 \%$ of the ice pack to $28 \%$ in 2018, and continues to decrease \cite{stroeve:2018}. As a result, the fraction of first-year ice has increased.  Because of this, there is a need to fully understand atmosphere-ocean interactions over first-year ice. 
+
+\section{Surface Energy Budget}
+The surface energy budget can influence ice growth or melt. A study done using SHEBA observations over sea ice show that the ice and snow thickness has a significant impact on the surface temperature and, as a result, the surface energy budget, due to the changes in heat transfer through the snow and ice \cite{hines:2015}. Additionally, the surface energy budget is often misrepresented in models due to an underestimation of cloud cover, resulting in downwelling longwave radiation biases \cite{inoue:2008}. Equations \ref{ch1_eq_1} and \ref{ch1_eq_2} show the surface energy budget and net radiation equations.
+
+\begin{equation}\label{ch1_eq_1}
+Q_{net} = (Q_{sw_down} - Q_{sw_up}) + (Q_{lw_down} - Q_{lw_up})
+\end{equation}
+
+\begin{equation}\label{ch1_eq_2}
+R = Q_{net} + H_{s} + H_{l}
+\end{equation}
+
+Where $Q_{sw}$ and $Q_{lw}$ are the shortwave and longwave radiative fluxes respectively with the arrow denoting upward vs downward, R is the residual flux, including heat transfer through the ice and heat storage, and $H_{s}$ and $H_{l}$ are the sensible and latent heat fluxes. While net radiative flux can easily be measured or estimated given temperature profiles and cloud cover, values such as the sensible and latent heat fluxes are not as straightforward to estimate. Models often have skill in one value, but have large compensating errors in other values. These values are heavily influenced by both the clouds and the near-surface boundary layer structure \cite{tjernstrom:2005}.
+
+\subsection{Clouds: Longwave and Shortwave Radiation}
+
+Due to complexities in cloud feedback and the underlying surface there are a variety of ways models handle cloud formation and properties. Properties such as proximity to melt ponds/open water, the shape of the snow crystals, and snow depth, can all influence how clouds modify surface radiation. Arctic atmospheric models, while key to understanding cloud processes, are not perfect, and still have trouble quantifying these processes. 
+
+A key feedback in the arctic regions is the cloud radiation feedback, which, unlike other Arctic amplification feedback, can be either positive or negative depending on influences such as the cloud properties and sun angle. This process is nonlinear and can be either positive or negative. This process applies all over the globe, but due to the high surface albedo and lack of atmospheric moisture it has the potential to influence the surface radiation budget more in the Arctic. Further research is necessary to quantify the exact influence. When clouds are lower in the atmosphere or are more optically thick they emit more longwave radiation. However, a cooler cloud, one higher in the atmosphere or thin, would radiate less longwave radiation, but still more than under clear-sky conditions. This is an example of how clouds can warm the surface. On the other hand, clouds can cool the surface as a result of their shortwave impact. The higher the cloud albedo (optically thicker the cloud), the more shortwave radiation being reflected away, not reaching the surface, and not being included in the surface energy budget. Intrieri et al. \cite{intrieri:2002} studied the radiative influence of clouds at SHEBA and found that, for the SHEBA location, the net cloud effect was to warm the surface through most of the year, with only a short two-week period in the middle of the summer, when the location was getting the most direct solar radiation, when clouds had a cooling influence on the surface by reflecting shortwave radiation away from the surface. 
+
+Cloud radiative forcing (CRF) is often used to quantify the impacts of clouds on surface radiation. This is defined in equation \ref{ch1_eq_3}, but can be conceptually understood as the difference between the surface radiation in the absence of clouds ($Q_{clear sky}$) and the actual radiation ($Q_{actual}$). A large positive (negative) cloud radiative forcing indicates a surface warming (cooling) due to cloud radiative influence. 
+
+\begin{equation}\label{ch1_eq_3}
+CRF = Q_{actual} - Q_{clear sky}
+\end{equation}
+
+\subsection{Sensible and Sensible Heat Flux}
+
+The near-surface planetary boundary layer (PBL) is often strongly stable in the Arctic due to significant surface radiative cooling compared to the ambient temperature. This is due to a combination of the cold surface and the small-to-nonexistent diurnal cycle. Additionally, the latent heat of phase change in the surface during the melt season also acts to cool the air closest to the surface, creating a stable boundary layer. Models, however, often have a difficult time simulating these strongly stable conditions, and either form a PBL not stable enough or too stable for actual conditions.  Regional models are generally better than this, and can be used to improve larger-scale models, but there is still a need for further model improvement. The fluxes influencing the boundary layer are strongly influenced by the cloud conditions, and a model with inaccurate clouds will likely also have inaccurate boundary layer conditions and fluxes \cite{tjernstrom:2005}. 
+
+\section{Arctic Measurements}
+
+One of the first major experiments studying meteorology and ice dynamics took place between 1975 and 1976. This experiment, The Arctic Ice Dynamics Joint Experiment (AIDJEX), was led by the University of Washington and consisted of four ice camps with surrounding buoys. Taking measurements over sea ice is both dangerous and difficult as deployment and maintenance is nearly impossible without the aid of a ship. Other ways of taking in-situ measurements include floating buoys, but the measurement capabilities of buoys are limited by the lack of available on-board power. Research vessels are utilized for their ability to provide both power, transportation, and housing for scientists while observing the Arctic.
+
+A series of ship-borne experiments took place between 1991 and 2001: the International Arctic Ocean Experiment (AOE) (1991), AOE-96 (1996) \cite{tjernstrom:2004}, the Surface Heat Budget of the Arctic  Experiment (SHEBA) (October 1997 - October 1998) \cite{uttal:2002}, and AOE (2001). The earlier two AOE focused on atmospheric aerosols and did not include vertical profiles of atmospheric structure or ice characteristics.  The 2001 AOE experiment focused more extensively on meteorological variables \cite{tjernstrom:2004}. SHEBA had a larger array of meteorological instruments, observing both the cloud properties and the surface energy budget over sea ice for an entire year \cite{uttal:2002}. Before the Norwegian Young Sea Ice Campaign (N-ICE2015) took place in January of 2015, SHEBA (described in the next subsection) was the most recent experiment to observe these atmospheric properties. 
+
+\subsection{SHEBA}
+
+SHEBA took place onboard a Canadian Coast Guard ice breaker, the Des Groseillers, in the Beaufort Sea north of Alaska from 1997 to 1998 \cite{uttal:2002, shupe:2004}. The ship sailed north from Alaska and was intentionally frozen into the sea ice and allowed to drift with the ice \cite{uttal:2002}. Helicopter flights also surveyed the area to document the ice conditions surrounding the ship and a tethered balloon was utilized to observe the boundary layer conditions. The primary goals of this experiment were to observe the changes occurring in the surface energy budget over sea ice as the polar regions undergo global warming with the hope that these observations can give both context to the poorly understood mechanisms occurring under these never-before-observed conditions and to provide observations to validate and improve general circulation models in the Arctic \cite{uttal:2002}. Particular focus was on ocean-ice-atmosphere feedbacks, such as the ice-albedo and cloud-radiation feedbacks during the entire annual cycle. 
+
+The ice pack SHEBA was frozen into varied in thickness from 1.8 m (October) to 2.6 m (June) and was classified as multiyear sea ice, indicating this ice pack had not completely melted the previous summer. Snowpack was also observed on the ice throughout the experiment, reaching a maximum depth in June, when 30 cm of snow fell but melted quickly in the following days \cite{uttal:2002}. Multi-year sea ice is becoming less prominent on the polar regions, and first-year sea ice is beginning to dominate the Arctic. This shift away from the conditions seen at SHEBA and toward more thin, first-year sea ice is motivation for N-ICE2015, which took observed conditions over young sea ice \cite{graham:2017}. 
+
+Mixed phase clouds were seen at SHEBA during the entire year, with the largest amount occurring in the transition seasons, with temperature ranges from $-40 \deg C$ to $0 \deg C$ \cite{shupe:2004}. These low temperatures within mixed phase clouds had been observed in previous experiments, with only minor differences in cloud properties during stormy periods. 
+
+\subsubsection{Remaining Questions from SHEBA}
+
+\subsection{The Norwegian Young Sea Ice Field Campaign (N-ICE 2015)}
+N-ICE 2015 was a 6-month field experiment spanning from January to July 2015, observing both atmospheric properties and ice dynamics. A research icebreaker vessel, the RV Lance, was frozen into the sea ice north of Svalbard and allowed to move with the ice floes. The ship tracks can be seen in \ref{fig:ch1_f1}. This location sees thin, first-year sea ice, as opposed to the thick, multi-year sea ice observed during SHEBA \cite{cohen:2017}. As a result, N-ICE is representative of the new regime that the polar regions are moving toward as the climate warms. 
+
+The primary objectives of N-ICE are:
+
+\begin{enumerate}
+    \item To quantify the change in atmosphere-ice-ocean interactions as the atmosphere shifts from primarily multi-year sea ice to thin, first-year sea ice \cite{granskog:2018, granskog:2015}. 
+    \item Observe how changes in sea ice impact the marine ecosystem and their response \cite{granskog:2015}.
+    \item Provide key observations to tune and validate global circulation models \cite{granskog:2018, granskog:2015}.
+\end{enumerate}
+
+\subsection{N-ICE vs SHEBA: Key Differences}
+% N-ICE vs SHEBA
+Shupe et al. \cite{shupe:2004} observed mixed phase clouds during SHEBA were consistent in temperature, liquid water path, and ice water content with previous studies over similar sea ice. The largest disagreement with previous experiments occurred during winter storm periods. NICE2015 observed more extreme storm periods than those seen at SHEBA, bringing wind speed, pressure, and temperature changes of previously unobserved magnitudes. 
+
+\section{Arctic Modeling}
+The Polar Meteorology Group at the Ohio State University Byrd Polar Research Center developed a series of enhancements to the Weather Research and Forecasting Model (WRF). Additions to the model are always being added, but at the time of writing, modifications have been made to the surface energy budget over ice, an updating sea-ice mask, and changes to microphysics. Testing has been completed using datasets over Alaska, Antarctica, and Greenland. The only studies over sea ice that have been done used data collected SHEBA and, now, N-ICE. 
+
+\section{Dissertation Outline and Attributions}
+Chapter two will go into detail about the measurements made at N-ICE, including meteorological conditions and cloud radiative forcing. Analysis for this chapter was completed by Sarah, with LiDAR processing and section x.x completed by Dr. Robert Stillwell. Dr. Von Walden and Dr. Stephen Hudson were advisors on this research. 
+
+Using these measurements, chapter 3 compares the latent and sensible heat flux observed at N-ICE to fluxes calculated using the Maximum Entropy Method and a Bulk Flux algorithm. These methods of calculating fluxes depend on exchange coefficients and surface stability, which is also thoroughly explored in chapter 3. Chapter 4 looks into how a popular weather model simulates the conditions seen at N-ICE and how changing parameters built into the model can influence the resulting fluxes. All research, coding, analysis, and writing was completed by Sarah with advising from Dr. Hailong Wang and Dr. Von Walden. Part of this research was done in collaboration with Pacific Northwest National Lab as part of the Department of Energy's Office of Science Graduate Student Research Program (DOE SCGSR).
+
+The equations used in the model are broken down in Chapter 5, comparing them to the methods of calculating flux in Chapter 3. This chapter uses the measurements described in chapter 2, the equations explored in chapter 3, and the modeling schemes detailed in chapter 4 to answer the question "Can we improve how models simulate fluxes over first-year sea ice?" This chapter also includes further pathways this research could take.
+
+In addition to the work presented in the following chapters, I completed data processing of the flux data. Appendix B documents the process of determining the sensitivity of EddyPro's results to gaps in the input datasets and if artificially filling these gaps is the most accurate way to represent this missing data. This data was used in a dataset \cite{} and in a publication \cite{walden:2017} on which I am the 4th author on.
+
+

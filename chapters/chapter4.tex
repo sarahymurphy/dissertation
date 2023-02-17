@@ -1,0 +1,98 @@
+\chapter{Validation of the Polar Weather Research and Forecasting Model over First Year Sea Ice}
+\\
+\noindent \emph{Current Arctic sea ice coverage levels (both annual and late summer) are at their lowest since at least 1850 (high confidence), and for late summer for the past 1000 years (medium confidence). Since the late 1970s, Arctic sea ice area and thickness have decreased in both summer and winter, with sea ice becoming younger, thinner and more dynamic (very high confidence).}
+
+\hspace{6 cm} - IPCC Sixth Assessment Report, August 2021
+
+\begin{spacing}{1}
+
+\noindent \textbf{Abstract}
+
+ \noindent Modeling sensible and latent heat flux over first-year sea ice is becoming more important as young sea ice begins to dominate the polar regions. In-situ atmospheric observations over sea ice are rare, as field experiments can be dangerous and expensive, resulting in a lack of validation and tuning data for modeling in these regions. The Norwegian Young Sea Ice Experiment (N-ICE) observed atmospheric conditions from January to June 2015, providing valuable observational data. Eddy covariance measurements from N-ICE were processed through the LI-COR’s EddyPro 7 software to estimate surface heat fluxes over the first-year ice using the eddy covariance method. The Noah Land Surface Model (LSM) used to calculate surface fluxes in Weather Research and Forecasting (WRF) model currently uses the bulk approach over sea ice, which requires estimations of the Monin-Obukhov scaling and stability parameters. These parameters are dependent on wind, potential temperature gradients, and surface stability. The cold surface often results in a strongly stable surface layer, a characteristic unique to the polar regions, presenting potential errors in the stability regimes used to estimate these parameters. Results from the Polar WRF over the N-ICE domain disagree with those directly calculated from the measurements. The magnitude of these differences reached greater than 40 Wm-2 at times. In this study, sensible and latent heat flux from N-ICE calculated using the eddy covariance method (EddyPro) are compared to those calculated using the bulk method (both calculated offline and from the Noah LSM in WRF). A sensitivity study is also presented examining the often empirically derived scaling and stability parameters used in the bulk method calculations, with recommendations for these values over first-year sea ice.
+\end{spacing}
+
+
+
+
+% from my prelim
+Polar WRF is a version of the Weather Research and Forecasting model (WRF) with modified physics for the polar regions. These modifications include enhanced mechanisms to handle the sea ice thickness and fraction and snow depth \cite{Hines:2015jz}. These are primarily changes in the land surface model (Noah LSM) and include the heat transfer and thermal diffusivity through the snow and ice, albedo, snow density adjustments, and skin temperature calculations \cite{Tastula:2012fta} \cite{Hines:2015jz}. This model is the predecessor to Polar MM5 with advanced physical parameterizations \cite{Bromwich:2009hp}. The Polar version of WRF has undergone limited testing. It has been used for weather forecasting in Antarctica \cite{Powers:2012hn} and has been tested over ice and land in the Arctic \cite{Tastula:2012fta} \cite{Bromwich:2009hp}. However, testing over thin, young sea ice has not been conducted. This paper will address the need for further testing over thin, newly formed sea ice. 
+
+
+
+
+\section{Results and Discussion}
+
+\subsection{Skin Temperature and Sea Level Pressure}
+
+The time series of skin temperature (Figure 5a) shows that all model runs did well in simulating the skin temperature in winter. In spring (April through the end of May), the models disagree with the measured skin temperature by the largest magnitude. This is likely the result of an inaccurate surface albedo and a lack of cloudiness. The model simulated the surface albedo to be around 0.2 less than the measured surface albedo (0.6 compared to 0.8). The model surface temperature reaches the freezing point earlier than the model. The transition season is when the model had the most difficulty in simulating the skin temperature, but in the summer, when the temperature reaches freezing, all models and observations are in agreement. The skin temperature distribution (Figure 6) is represented similarly between the different WRF runs. There is a slight disagreement in the peak and magnitude of the peak around 240 K between model runs. This peak is likely representative of the radiatively clear state of the atmosphere. The model runs capture a peak around 270 K but they do not resolve the secondary peak around 260 K. Because these two peaks are likely the radiatively cloudy state, this shows that the model is not accurately representing clouds. It is assuming a warmer cloud radiative temperature indicating the clouds are warmer (lower) or that the cloud fraction is too high in the model.
+
+Sea level pressure was simulated well in the model runs, showing only a few small discrepancies. This can be seen in Figure 5b. There are a few small disagreements in early February and mid-May, but otherwise the model runs compare well to the measurements.
+
+
+\subsection{Longwave and Shortwave Fluxes}
+Figures 5c and 5d show the net longwave and shortwave flux. While it can be seen that the model runs overestimate these fluxes, it is difficult to determine the magnitude of these differences. Figures 7, 8, and 9 show the winter, spring, and summer components of longwave flux respectively. 
+
+Both upwelling and downwelling longwave radiation during the winter are captured in the model runs. Net longwave radiation is worse than the two individual components as the errors combine. The first peak, the clear-sky peak, is most accurately captured by the Goddard microphysics scheme/YSU PBL scheme (Run 1). The second peak, however, is more accurately captured by the WRF Single-Moment microphysics scheme and the YSU PBL scheme (Run 3). 
+
+In the spring, downwelling longwave is clearly dominated by the cloud microphysics schemes as the two schemes show different results, neither of which are close to measurements. Clouds in the spring were primarily thick, low level clouds that radiate at relatively warm temperatures. This can be seen by the large peak in the measurements around 2$50 Wm^{-2}$. The measurements, however, do not capture this large peak. There is one peak at higher radiation in all WRF runs but the magnitude not as large as that seen in the opaquely cloudy state for the measurements. The clear state has a similar peak amount of radiation but at a lower magnitude in the measurements compared to the model. This indicates that the model is not accurately portraying the portion of time that thick low level clouds are over the area. Upwelling longwave radiation has a large peak around $250 Wm^{-2}$ in the measurements with another secondary peak around $290 Wm^{-2}$. The models do not capture these values well due to the incorrect resolution of the surface temperature. Net longwave radiation is incorrect due to the addition of the errors in the upwelling and downwelling components. 
+
+Downwelling longwave radiation is portrayed well in most of the model runs except for the combination of the MYJ PBL scheme and the Goddard microphysics scheme in the Summer. However, even that scheme did capture the correct peak location. Upwelling longwave radiation, however, was slightly different in the model runs compared to the measurements. The measurements show a peak around $315 Wm^{-2}$, while the model runs show this peak occurring at a slightly lower flux. All of the model runs captured this similarly, with less spread than the measurements.
+
+Shortwave radiation returned to the Arctic at the start of floe 3. Spring and summer components of shortwave radiation are shown in Figures 10 and 11. The shortwave radiation in the spring is slightly larger in the model runs than in the measurements, with separation in the model runs by microphysics scheme. The first peak, around $100 Wm^{-2}$, is captured well by the model runs. The peak is slightly shifted to higher values indicating the potential of slightly optically thinner clouds. The larger peak is off by as much as $50 Wm^{-2}$ in one of the model runs. This peak is separated by the two different microphysics schemes, neither of which accurately portrays the peak. Because this time period had very limited clear-sky periods, it is likely that this peak had thin, high clouds occurring, and that the models are not resolving the cloud fraction correctly or are creating optically thinner clouds than are actually occurring. Upwelling shortwave radiation has some of the same issues as the downwelling shortwave radiation, however the models are showing less radiation going away from the surface than the measurements. The temperatures are warmer during this period so this could be due to an incorrect albedo estimation. The two curves are also less broad in the model runs, so the range of albedos are potentially smaller in the model than in them measurements. All model runs agree well on this, further indicating that this is likely due to a misrepresentation in albedo. Net shortwave is estimated to be too large in all spring model simulations due to an addition of the errors in both components of shortwave radiation. 
+
+Summer downwelling shortwave radiation is captured well in all the model simulations. The measurements have a slightly larger spread than the models but overall they did well. Upwelling shortwave radiation was quite different in the models and the measurements. The models showed significantly less upwelling shortwave radiation than the measurements. This is likely caused by a decrease in albedo due to earlier onset of warmer temperatures and greater net shortwave radiation earlier in the season (shown in the spring analysis). More melting, caused by the warmer temperatures, resulted in much less shortwave radiation being reflected away from the surface. This is an example of how it is important that all seasons and the timing of melt onset is important later on in the season. Net shortwave radiation is also largely incorrect due to the misrepresentation of the upwelling shortwave radiation, showing a larger net flux in all model simulations.
+
+\subsection{Turbulent Fluxes}
+Figure 5 also shows the sensible and latent heat fluxes (E and F, respectively). The magnitude of latent heat flux was close to zero throughout the entire experiment, but modeled values reached up to -40 Wm$^{-2}$   at times in each of the different simulations. The spring and summer appeared to the the worst for the latent heat flux model calculations. 
+
+Analysis of Figures 12, 13, and 14 (the winter, spring, and summer latent heat flux distributions, respectively) indicate that MYJ PBL run did the worst at resolving the latent heat flux in the winter, as it showed a much larger spread with an accurate peak at 0 Wm$^{-2}$  . This indicates more phase change than was actually observed. The YSU PBL scheme has a more narrow distribution during this time than the other PBL scheme, with an accurate (if not slightly more positive) peak. The peak shown by the YSU PBL scheme still has a wider distribution than the measurements with significantly more higher positive values than the measurements, indicating this model is producing more deposition/freezing/condensation than is actually occurring.
+
+Latent heat flux was similar in all the model simulations and was not close to the measurements in the spring. The measurements peaked at zero with limited spread, slightly favoring the negative values (melting/sublimation/evaporation). All the models, however, overestimated the amount of melting/sublimation/evaporation was occurring by overestimating the amount of negative latent heat flux. The models also have a much larger spread to them with a greater range of both positive and negative latent heat flux values, overall overestimating the phase change occurring.
+
+Just as in other seasons, the summer latent heat flux is more largely negative with a larger spread in all the model simulations compared to the measurements. Measurements show values near zero with a small increase in the positive values (freezing/condensation/deposition) whereas the model runs favor a much larger amount of melting/sublimation/evaporation.
+
+In the winter, sensible heat flux is incorrect in all model runs and is  most influenced by the PBL scheme (Figure 15). The YSU PBL scheme shows a peak at the correct location, but a smaller spread than the measurements, indicating it does not create a surface temperature as different than the air temperature as the measurements are seeing. MYJ PBL, however, has the opposite problem. The spread is too large indicating the fluxes between the surface and atmosphere are too large, indicating larger temperature differences. Neither scheme accurately portrays the shape of the curve, which is less steep on the positive side.
+
+Spring sensible heat flux (figure 16) peaked just below 0 Wm$^{-2}$ in the measurements, but were more negative in the model runs, indicating that the model predicted the atmosphere was warmer than the surface and flux was going into the surface. The MYJ PBL scheme predicted a small second peak slightly positive that was also captured in the measurements, but the shape, value, and magnitude of this peak was incorrectly portrayed in the model. This slightly positive peak occurred around 25 Wm$^{-2}$   in the measurements and was likely due to cold air advecting over the warming surface. The YSU PBL scheme did not capture this.
+
+Sensible heat flux is captured well in the YSU PBL scheme simulations but not as well in the MYJ PBL scheme during the summer (figure 17). The measurements and the YSU scheme runs showed a larger spread leaning slightly more into negative sensible heat fluxes, while the MYJ scheme had slightly more positive values and a more narrow distribution. This indicates that there is a greater flux into the surface in the YSU scheme and in the measurements, as the surface temperature is less than the air temperature.
+
+\section{Proposed Research}
+
+The proposed research is directly motivated by the results seen in the preliminary comparisons with polar WRF. The magnitude of the differences seen in the previous section are significant and point to inaccuracies in the variables use in the land surface model. 
+
+\subsection{Improvements to Polar WRF using observations from the N-ICE2015 field campaign, Murphy et al (2020)}
+
+Based on the preliminary work described above, we proposed to perform additional model simulations using polar WRF. These are listed below.
+
+\begin{itemize}
+    \item \textbf{Microphysics Schemes}
+    \begin{itemize}
+        \item Goddard *
+        \item Predicted Particle Properties (P3)
+        \item WRF Single-Moment 5-Class *
+        \item Morrison Bulk Two-Moment
+    \end{itemize}
+    \item \textbf{Boundary Layer Schemes}
+    \begin{itemize}
+        \item Yonsei University *
+        \item Mellor-Yamada-Janjic (MYJ) *
+        \item Mellor-Yamada-Nakanishi-Niino (MYNN)
+        \end{itemize}
+    \item \textbf{Land Surface Model} Unified Noah LSM
+    \item \textbf{Boundary and Initial Conditions} ECMWF ERA-Interim Reanalysis
+    \item \textbf{Resolution} 100 m x 100 m
+    \item \textbf{Output frequency} 8-hours
+\end{itemize}
+
+% Selection of schemes in WRF
+The above list outlines settings to be used in future WRF runs. These settings were selected from comparison with other WRF studies in both polar and non-polar applications. The Goddard \cite{Tao:2000vs} and WRF Single-Moment 5-Class microphysics \cite{Hong:1913uy} schemes are the two most commonly used microphysics schemes found in a thorough search of the literature regardless of the location being modeled. The P3 scheme is a newly released scheme with advancements to the Morrison Bulk Two-Moment scheme \cite{Milbrandt:2016ko}. This scheme was not designed for the polar regions, but is of particular interest due to the way it ice particle density. Many microphysics schemes use bins to classify  different cold cloud particle sizes and densities, leading to assumptions that can potentially lead to large errors. The P3 scheme eliminates the conversion between categories, reducing the simplifications for ice particles \cite{Morrison:2005ga}. However, this scheme has a particle size cutoff, eliminating smaller particles, which may prove to be problematic in the dry polar regions.
+
+% Boundary layer schemes
+The most commonly used boundary layer schemes found throughout the literature were the Yonsei University scheme \cite{Hong:2006vc} and MYJ scheme. The MYNN scheme is a modified version of the MYJ scheme. The MYNN scheme has been tested over Svalbard, a location close to the N-ICE domain but with different surface conditions \cite{Pilguj:2018ff}. Development of the MYNN scheme focused on large eddy diffusion \cite{Cohen:2015gp}, while the MYJ scheme is focused more for stable flows \cite{Janjic:1994vv} \cite{Mellor:1982ty}. MYJ is a 1.5-order closure scheme and MYNN is a 2nd-order closure scheme \cite{Pilguj:2018ff}.
+
+% Clouds
+Preliminary research of the two microphysics and boundary layer schemes has shown that the models do not accurately represent the amount of cloud cover occurring, resulting in inaccuracies in both the longwave and shortwave radiation. Cloud cover was consistently present, particularly in the summer. However, the radiation forcing in the model showed that either the cloud fraction was not high enough or the clouds not optically thick enough in any of the simulations. Upwelling shortwave radiation was hindered by an unreasonably low surface albedo in the model simulations. This impacted the cloud radiative forcing as the upwelling shortwave radiation was less in the simulations than in the measurements. 
+
+% Surface temperature
+Surface temperature structure was incorrect in the models. This can be seen by looking at the large values of sensible heat flux. The surface and atmosphere were often modeled to have a larger temperature difference than in the measurements, shown by a large spread in sensible heat flux. This larger spread occurred throughout the experiment and in all model simulations. Phase change was also incorrect in the model, leading to a large spread in latent heat flux. The model, possibly also due to the incorrect temperature structure, showed an elevated amount of both deposition/condensation/freezing and sublimation/evaporation/melting (positive and negative latent heat flux, respectively).
