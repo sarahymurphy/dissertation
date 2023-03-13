@@ -1,6 +1,10 @@
 % Washington State University thesis/dissertation class
 % LaTeX document class v0.1
 % JMcDonald1@wsu.edu
+%Import the natbib package and sets a bibliography  and citation styles
+\usepackage{natbib}
+\bibliographystyle{apa-good}
+\setcitestyle{authoryear,open={(},close={)}} %Citation-related commands
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{wsu-thesis}[2020/03/01 v0.1 Washington State University thesis/dissertation class]
@@ -9,6 +13,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 \LoadClass[letterpaper,12pt]{report}
+
 % Default page number position is bottom
 \providecommand{\pagenumposition}{plain}
 
@@ -27,7 +32,8 @@
 \usepackage{multicol}
 \usepackage[table]{xcolor}
 \usepackage{multirow}
-
+ \usepackage{natbib}
+ 
 % Need to manually add bibliography (done below) for correct ToC placement
 %\RequirePackage[nottoc,notbib]{tocbibind}
 \RequirePackage{xparse}
@@ -375,7 +381,8 @@ of \MakeUppercase{\@author} find it satisfactory and recommend that it be accept
   \phantomsection
   \addcontentsline{toc}{chapter}{#2}
   \begin{spacing}{1.0}
-    \bibliographystyle{plain}
+    \bibliographystyle{abbrvnat}
     \bibliography{#1}
   \end{spacing}
 }
+\setcitestyle{authoryear,open={(},close={)}}
