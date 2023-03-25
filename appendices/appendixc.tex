@@ -22,7 +22,6 @@
 \rowcolor[HTML]{FEEEF5}\textbf{2-MYNN}		&	4.5, 0.9, 7.1	&	0, 0, 4.5	&	-17.1, 0, 29	&	12, 0.6, 22.3	&		\\
 \hline
 \rowcolor[HTML]{F3F3F3} & \multicolumn{5}{c|}{\textbf{Spring}} \\
-
 \hline
 \rowcolor[HTML]{F0F8E6}\textbf{G-YSU}		&	-2.6, 0.9, 4.2	&	2.4, -0.2, 7.7	&	2.2, -0.3, 15.4	&	-33, 0.3, 42.2	&	2.2, -0.3, 15.4	\\
 \rowcolor[HTML]{E0EDF4}\textbf{G-MYJ}		&	-2.4, 0.9, 4.1	&	2, -0.2, 6.5	&	2, -0.2, 15.3	&	-32, 0.3, 42.2	&	2, -0.2, 15.3	\\
@@ -35,6 +34,30 @@
 \rowcolor[HTML]{FEEEF5}\textbf{2-MYNN}		&	2.2, 0.8, 4.1	&	6.5, -0.2, 9.2	&	10.3, -0.3, 18.8	&	-3.3, 0.3, 25.4	&	10.3, -0.3, 18.8	\\
 \hline
 \end{tabular}
-\caption{Mean model bias (left), correlation (middle), and root mean square error (right) for temperature ($K$), latent and sensible heat flux ($Wm^{-2}$), and longwave and shortwave radiation ($Wm^{-2}$). Acronyms represent the MP and PBL schemes (defined in table \ref{tab:schemes}). Rows are ordered by MP scheme and colored by PBL scheme.}
+\caption[Polar WRF mean model bias, correlation, and root mean square error.]{Mean model bias (left), correlation (middle), and root mean square error (right) for temperature ($K$), latent and sensible heat flux ($Wm^{-2}$), and longwave and shortwave radiation ($Wm^{-2}$). Acronyms represent the MP and PBL schemes (defined in table \ref{tab:schemes}). Rows are ordered by MP scheme and colored by PBL scheme.}
 \label{tab:wrfstats}
+\end{table}}
+
+\begin{table}[p]
+\center
+\centering
+\footnotesize
+\doublespacing
+{
+\begin{tabular}{| c | c | c | c | c |}
+\hline\rowcolor[HTML]{F3F3F3} & \textbf{Winter Net} & \textbf{Spring LW} & \textbf{Spring SW} & \textbf{Spring Net} \\
+\hline
+\rowcolor[HTML]{F0F8E6}\textbf{G-YSU}		&	-40.8	& -40.8	& 17.9	& -22.9	\\
+\rowcolor[HTML]{E0EDF4}\textbf{G-MYJ}		&	-39.3	& -39.3	& 16.9	& -22.4 \\
+\rowcolor[HTML]{FEEEF5}\textbf{G-MYNN}		&	-32.7	& -32.7	& 15.6	& -17.1	\\
+\rowcolor[HTML]{E0EDF4}\textbf{5-MYJ}		&	-34.7	& -34.7	& 18.4	& -16.4	\\
+\rowcolor[HTML]{FEEEF5}\textbf{5-MYNN}		&	-25.0	& -25.0	& 14.9	& -10.1	\\
+\rowcolor[HTML]{F0F8E6}\textbf{P3-YSU}		&	-25.9	& -25.9	& 14.4	& -11.6	\\
+\rowcolor[HTML]{E0EDF4}\textbf{P3-MYJ}		&	-39.3	& -39.3	& 16.9	& -22.4	\\
+\rowcolor[HTML]{E0EDF4}\textbf{2-MYJ}		&	-12.9	& -12.9	& 8.9	& -4.1  \\
+\rowcolor[HTML]{FEEEF5}\textbf{2-MYNN}		&	1.6	    & 1.6	& 6.8	& 8.4  \\
+\hline
+\end{tabular}
+\caption[Polar WRF mean modeled CRF bias.]{Mean model CRF bias ($Wm^{-2}$). No shortwave CRF values are presented for winter as no shortwave radiation was present until spring. Floe 1 and 2 are considered winter and Floe 3 and 4 are spring. Acronyms represent the MP and PBL schemes (defined in table \ref{tab:schemes}). Rows are ordered by MP scheme and colored by PBL scheme.}
+\label{tab:wrfstats_CRF}
 \end{table}}
