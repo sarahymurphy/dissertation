@@ -16,10 +16,11 @@ In spite of Polar WRF being available for over 10 years, the model has only unde
 In this modeling study, observations from the Norwegian Young Sea Ice field campaign (N-ICE) were used to validate the Polar Weather Research and Forecasting model. The model was run for a 6-month period (1 January 2015 to 1 July 2015) for selected combinations of planetary boundary layer (PBL) and cloud microphysics (CM) schemes; this time period overlapped with the entire N-ICE campaign. Three case study periods were selected for further analysis using idealized model runs using radiosonde soundings taken during N-ICE as input.
 
 \subsection{Observations}
-Details about the N-ICE field campaign can be found in Chapter 2. Most notable for the analysis presented here are the atmospheric radiation measurements, taken by Kipp and Zonen (CMP22 and CGR4) radiometers at 1 to 1.2 $m$ above the ground. \citet{granskog:2015} and \citet{walden:2017} include a complete analysis of the radiative fluxes during N-ICE, which includes a description of how surface temperatures were calculated. \citet{walden:2017} also showed that the radiative fluxes during N-ICE were primarily influenced by wind, advection, and cloud cover. 
+Details about the N-ICE field campaign can be found in Chapter 2. Most notable for the analysis presented here are the atmospheric radiation measurements, taken by Kipp and Zonen (CMP22 and CGR4) radiometers mounted 1 to 1.2 $m$ above the ground. \citet{granskog:2015} and \citet{walden:2017} include a complete analysis of the radiative fluxes during N-ICE, which includes a description of how surface temperatures were calculated. \citet{walden:2017} also showed that the radiative fluxes during N-ICE were primarily influenced by wind, advection, and cloud cover. 
 
 \subsection{Model Setup}
-The Weather Research and Forecasting model version 4.1.4 was run with polar optimizations created by researchers at The Ohio State University. WRF with polar optimizations is often referred to as Polar WRF. WRF is a mesoscale weather model developed with both numerical weather prediction and research applications in mind. It is maintained by the NCAR's Mesoscale and Microscale Meteorology Laboratory (MMM). As of 2021, WRF had over 57,800 registered users. The model allows users to select many options, such as domain size, temporal and spatial resolution, and input datasets.
+
+The Weather Research and Forecasting model version 4.1.4 was run with polar optimizations created by researchers at The Ohio State University. WRF with polar optimizations is often referred to as Polar WRF. WRF is a mesoscale weather model developed with both numerical weather prediction and research applications in mind. It is maintained by the NCAR's Mesoscale and Microscale Meteorology Laboratory (MMM). As of 2021, WRF had over 57,800 registered users. The model allows users to select many options, such as domain size, temporal and spatial resolution, and input datasets \citep{skamarock:2019}.
 
 \begin{figure}[h]
     \centering
@@ -60,7 +61,14 @@ Spring & 1 April - 1 July 2015 \\
 
 In addition to the choice of input datasets and the underlying models used, one can select from a variety of different schemes to control different physical processes in the atmosphere and at the surface. This study focuses on the evaluation of different PBL and CM schemes because of their importance to Arctic conditions. The schemes used here were selected after a thorough literature review of previous WRF studies of both polar and non-polar applications. Various PBL schemes were selected to determine which of them most accurately represents the strong near-surface inversion in the Arctic. Clouds also have strong radiative importance in the Arctic, so a variety of CM schemes were selected to determine which provide accurate representations of Arctic clouds, including the presence of mixed-phase (water and ice) and supercooled water clouds. All other schemes, with the exception of the surface layer scheme, were kept constant throughout all simulations. Table \ref{tab:schemes} shows all PBL and CM schemes chosen for this study and the abbreviations used to refer to each model run. 
 
-In addition to the PBL and CM schemes, a radiation scheme, surface layer scheme, and land surface model (LSM) must be selected. Unified Noah Land Surface Model (Noah LSM) was selected as the LSM. The Noah LSM has been tested and improved over polar regions, and its tuning is a key strength of Polar WRF \citep{mukul:2004, hines:2015, tewari:2004}. The Rapid Radiative Transfer Model (RRTMG) was selected to handle longwave and shortwave radiation \citep{mlawer:1997} and the Revised MM5 surface layer scheme was used for all model simulations except those with the Mellor–Yamada–Janjic (MYJ) PBL scheme \citep{jimenez:2012}. The ETA Similarity surface layer scheme is required by the model to use the MYJ PBL scheme \citep{janic:2001}. 
+\begin{figure}[p!]
+    \centering 
+    \includegraphics[width=1\linewidth]{figures/chapter3/WRF_Flowchart.jpg}
+    \caption[WRF Model physics scheme exchanges.]{The relevant WRF model physics schemes, variables exchanges, and calculations used in this paper.}
+    \label{fig:wrfflow}
+\end{figure}
+
+In addition to the PBL and CM schemes, a radiation scheme, surface layer scheme, and land surface model (LSM) must be selected. Unified Noah Land Surface Model (Noah LSM) was selected as the LSM. The Noah LSM has been tested and improved over polar regions, and its tuning is a key strength of Polar WRF \citep{mukul:2004, hines:2015, tewari:2004}. Further exploration of the Noah LSM can be found in Chapter 6. The Rapid Radiative Transfer Model (RRTMG) was selected to handle longwave and shortwave radiation \citep{mlawer:1997} and the Revised MM5 surface layer scheme was used for all model simulations except those with the Mellor–Yamada–Janjic (MYJ) PBL scheme \citep{jimenez:2012}. The ETA Similarity surface layer scheme is required by the model to use the MYJ PBL scheme \citep{janic:2001}. Figure \ref{fig:wrfflow} is a flowchart showing the key physics schemes, variable exchanges, and relevant calculations in the model.
 
 \begin{table}[t]
 \doublespacing
@@ -148,27 +156,27 @@ Mean~bias = \frac{1}{n}\sum^{n}_{i=1}(y_{mod} - y_{obs})
 \subsection{Skin Temperature}
 G-MYJ had the smallest mean temperature bias in winter. For spring, 2-MYJ had the smallest model bias. Figure \ref{fig:wrf_tsk} shows the distribution of skin temperature from each model run with the measurements shown in black. P3-YSU has colder temperatures than the measurements and all model runs throughout the entire experiment and, as a result, has the largest biases in skin temperature in both seasons. 
 
-Some of these disagreements between the model and measurements can be attributed to inaccurate surface albedo and a lack of cloudiness. The model simulated the surface albedo to be around 0.2 less than the measured surface albedo (0.6 compared to 0.8 measured at N-ICE). The model surface temperature reaches the freezing point earlier than the observations. The transition season is when the model had the most difficulty in simulating the skin temperature, but in the summer, when the temperature reaches freezing, all of the model simulations agree well with the observations. 
-
-\begin{figure}[h!]
+\begin{figure}[b!]
     \centering
     \includegraphics[width=1\linewidth]{figures/chapter3/WRF_TSK_Histo.png}
     \caption[Polar WRF simulated temperature histograms.]{Temperature for the entire observational period (top), winter (middle), and spring (bottom) for each of the Polar WRF runs. Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
     \label{fig:wrf_tsk}
 \end{figure}
 
+Some of these disagreements between the model and measurements can be attributed to inaccurate surface albedo and a lack of cloudiness. The model simulated the surface albedo to be around 0.2 less than the measured surface albedo (0.6 compared to 0.8 measured at N-ICE). The model surface temperature reaches the freezing point earlier than the observations. The transition season is when the model had the most difficulty in simulating the skin temperature, but in the summer, when the temperature reaches freezing, all of the model simulations agree well with the observations. 
+
 \subsection{Longwave and Shortwave Fluxes}
 In the winter, P3-YSU had the lowest bias in longwave flux. All other model simulations produced a positive bias in the winter. This suggests that the low bias in longwave flux is likely due to the strong negative temperature bias compensating for the overestimation of longwave flux occurring within the model. 
- 
- In winter, the distributions shown in Figure \ref{fig:wrf_netlw} show two peaks in the observations (black bars). One peak shows a maximum between -60 and -40 $Wm^{-2}$ and corresponds to clear sky conditions. These conditions are most accurately modeled by G-YSU. A second peak occurs around -10 $Wm^{-2}$ and is related to cloudy conditions, which is most accurately captured by 5-MYJ. Overall, the lowest net longwave biases were seen with the G-YSU and P3-YSU simulations, indicating that the YSU boundary layer scheme is producing the best surface-layer temperature structure during the winter at N-ICE. 
- 
- \begin{figure}[h!]
+
+  \begin{figure}[t]
     \centering
     \includegraphics[width=1\linewidth]{figures/chapter3/WRF_NetLW_Histo.png}
     \caption[Polar WRF simulated net longwave flux histograms.]{Net longwave flux for the entire observational period (top), winter (middle), and spring (bottom) for each of the Polar WRF runs. Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
     \label{fig:wrf_netlw}
 \end{figure}
 
+ In winter, the distributions shown in Figure \ref{fig:wrf_netlw} show two peaks in the observations (black bars). One peak shows a maximum between -60 and -40 $Wm^{-2}$ and corresponds to clear sky conditions. These conditions are most accurately modeled by G-YSU. A second peak occurs around -10 $Wm^{-2}$ and is related to cloudy conditions, which is most accurately captured by 5-MYJ. Overall, the lowest net longwave biases were seen with the G-YSU and P3-YSU simulations, indicating that the YSU boundary layer scheme is producing the best surface-layer temperature structure during the winter at N-ICE. 
+ 
  Spring and summer longwave flux values were more largely negative in all model runs compared to the measurements. This indicates that the surface was losing more longwave flux than it was gaining, which is likely due to clouds in the models being either too cold, too high, or that the cloud fraction is too low to produce the downward longwave flux required to balance out the amount of longwave being lost from the surface. In the spring, the downward longwave is clearly dominated by the CM schemes, as the schemes show vastly different results. The WRF 2-Moment CM scheme has the lowest net longwave biases in the spring by almost 20 $Wm^{-2}$ in some cases (Table \ref{tab:meanbias}). The 2-MYNN scheme has the lowest mean net longwave bias for spring, which indicates that this scheme may be producing clouds closest to what was actually observed. While the 2-MYNN does well with the spring and summer net longwave flux, this simulation had the largest biases in the net shortwave flux, which indicates that there may be some compensating errors in flux.
 
 \begin{figure}[h!]
@@ -261,6 +269,4 @@ In the spring, latent and sensible heat fluxes produced by simulations using the
 
 The time of year and the near-surface atmospheric temperature structure are important to consider when selecting CM and PBL schemes. In the winter when surface inversions are more likely to be present, the MYNN scheme produces the most accurate sensible heat flux estimations. However, the MYJ scheme appears to perform best for the latent heat flux and temperature. In the spring, when mixed-phase clouds are more common and the surface is starting to melt, the MYJ scheme still excels at estimating the latent heat flux and has some of the lowest biases. 
 
-The overall best scheme combination to use in the polar regions depends on what the variable of interest is and what the conditions are. Looking at the entire period as a whole, the 5-MYNN had the lowest biases in temperature and sensible heat flux and relatively low biases in longwave flux and latent heat flux. G-MYJ produced the most accurate latent heat flux values but had fairly high biases for all other variables. 
-
-The next chapter will describe the cloud conditions at N-ICE to give a perspective into the conditions the model is trying to simulate. Cloud radiative forcing from the model is also calculated and explored for the 2-MYNN and G-YSU model simulations, as these had some of the lowest overall biases in winter and spring/summer, respectively. Chapter 5 looks at the equations used to calculate the sensible and latent heat fluxes and examines them independently of the model to determine if these equations could be at fault for some of the inaccuracies in the model output. This chapter also explores alternative ways of calculating the stability equations and the fluxes themselves in an attempt to improve modeled fluxes. To conclude, Chapter 6 uses lessons learned in the previous chapters to make recommendations for changes in Polar WRF over first-year sea ice. 
+The next chapter will describe the cloud conditions at N-ICE to give perspective into the conditions the model is trying to simulate. Cloud radiative forcing from the model is also calculated and explored for the 2-MYNN and G-YSU model simulations, as these had some of the lowest overall biases in winter and spring/summer, respectively. Chapter 5 looks at the equations used to calculate the sensible and latent heat fluxes and examines them independently of the model to determine if these equations could be at fault for some of the inaccuracies in the model output. This chapter also explores alternative ways of calculating the stability equations and the fluxes themselves in an attempt to improve modeled fluxes. Chapter 6 will conduct sensitivity studies to determine if improvements can be made to the model. To conclude, Chapter 7 uses lessons learned in the previous chapters to make recommendations for changes in Polar WRF over first-year sea ice. 

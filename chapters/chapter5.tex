@@ -6,36 +6,33 @@
 \end{spacing}
 \doublespacing
 \section{Introduction}
-% why is SEB important
+
 It is important to fully understand the surface energy budget over sea ice because small changes in radiative and/or turbulent fluxes enact feedbacks that can result in significant climate impacts. Reductions in sea ice have been found to amplify the impacts of global warming \citep{wunderling:2020, ipcc_techsum}. Differences in the surface features and atmospheric conditions present challenges for modeling the surface energy and water budgets \citep{wang:2009}. 
 
 \begin{equation}\label{eq:seb}
 F_{s} - C = Q_{net} + H_{s} + H_{l}
 \end{equation}
 
-% what is the sensible and latent heat flux physically?
 The surface energy budget can be seen in \ref{eq:seb}. The net radiative flux, $Q_{net}$, is the combination of the shortwave and longwave radiation (downward - upward), $F_{s}$ is the energy storage, and $C$ is the heat flux from the underlying ocean \citep{walden:2017}. The turbulent fluxes, $H_{s}$ and $H_{l}$, are the sensible and latent heat fluxes and are the focus of this chapter. Physically, the sensible heat flux represents conduction between the atmosphere and the surface that is driven by the temperature gradient near the surface. As defined here, positive sensible heat flux represents energy into the surface, which would occur when the near-surface atmospheric temperature is warmer than the surface. This is often the case during the winter when either near-surface temperature inversions occur or when warm air is advected over the frozen surface. Negative sensible heat flux values represent energy lost by the surface, which occurs when the surface is warmer than the overlying atmosphere. Latent heat flux is the heat associated with a phase change; positive latent heat flux is representative of deposition, condensation, or freezing at the surface, and negative latent heat occurs during sublimation, evaporation, or melting.
 
-% measuring SEB
-Some components of the surface energy budget, such as shortwave and longwave radiation, can be measured directly with radiometers. The sensible and latent heat flux, however, is more difficult to measure. A common approach is to use the Eddy Covariance technique. This is explained briefly by \citet{walden:2017}. First, high-frequency covariance measurements are made at different heights above the surface of temperature, wind speed and direction, and water vapor concentration. LiCor's EddyPro 7 \citep{epro} software is then used to process these measurements. The program conducts calibration and filtering on the raw measurements, then calculates the sensible and latent heat fluxes. the covariance measurements were made by a Campbell Scientific CSAT3 sonic anemometer and gas analyzer operated by researchers from the Norwegian Polar Institute. 
+Some components of the surface energy budget, such as shortwave and longwave radiation, can be measured directly with radiometers. The sensible and latent heat flux, however, is more difficult to measure. A common approach is to use the Eddy Covariance (EC) technique. This is explained briefly by \citet{walden:2017}. First, high-frequency covariance measurements are made at different heights above the surface of temperature, wind speed and direction, and water vapor concentration. LiCor's EddyPro 7 \citep{epro} software is then used to process these measurements. The program conducts calibration and filtering on the raw measurements, then calculates the sensible and latent heat fluxes. the covariance measurements were made by a Campbell Scientific CSAT3 sonic anemometer and gas analyzer operated by researchers from the Norwegian Polar Institute. 
 
-% field campaigns measuring the SEB
-The Norwegian Young Sea Ice Field Campaign (N-ICE) in 2015 and the Surface Heat Budget of the Arctic Ocean Experiment (SHEBA) in 1998 both deployed eddy covariance (EC) systems, radiometers, and meteorological towers over sea ice in the Arctic ocean. SHEBA took place over older, multi-year sea ice, and the data collected has been processed both using EC theory and using other methods not requiring the EC system. N-ICE took place over young, first-year sea ice. A description of the turbulent fluxes observed by the EC system and the radiation measured by radiometers can be found in \citet{walden:2017}, which describes the observed surface energy budget at N-ICE. 
+The Norwegian Young Sea Ice Field Campaign (N-ICE) in 2015 and the Surface Heat Budget of the Arctic Ocean Experiment (SHEBA) in 1998 both deployed EC systems, radiometers, and meteorological towers over sea ice in the Arctic ocean. SHEBA took place over older, multi-year sea ice, and the data collected has been processed both using EC theory and using other methods not requiring the EC system. N-ICE took place over young, first-year sea ice. A description of the turbulent fluxes observed by the EC system and the radiation measured by radiometers can be found in \citet{walden:2017}, which describes the observed surface energy budget at N-ICE. 
 
 \section{Calculating Sensible and Latent Heat Flux}
 In this section, the measured turbulent fluxes are compared to two methods of calculating sensible and latent heat flux: a bulk flux algorithm based on Monin-Obukhov similarity theory \citep{foken:2008} and the Maximum Entropy Production (MEP) method \citep{zhang:2021, wang:2014, wang:2009}. Both methods estimate flux without covariance measurements and instead utilize values more commonly observed at weather stations. The following subsection will give details about how the stability is used to calculate the stability-dependant scaling parameters required by equations for both the bulk flux algorithm and the MEP method.  
 
 \subsection{Bulk Flux Algorithm}
-The bulk flux algorithms are most commonly used for estimating turbulent fluxes \ref{reeves:2021} in models because they are relatively easy to calculate (depend only on meteorological variables) and are computationally efficient. The bulk flux algorithm formulations of sensible and latent heat flux used here are shown in Eq. \ref{eq:hs} and \ref{eq:hl} and are referred to as the "bulk flux algorithm" for the rest of this paper.
+The bulk flux algorithms are most commonly used for estimating turbulent fluxes \cite{reeves:2021} in models because they are relatively easy to calculate (depend only on meteorological variables) and are computationally efficient. The bulk flux algorithm formulations of sensible and latent heat flux used here are shown in Eq. \ref{eq:hs} and \ref{eq:hl} and are referred to as the ``bulk flux algorithm" for the rest of this paper.
 
 \begin{equation}\label{eq:hs}
-H_{s} = \rho c_{p} C_{Hz} w [T_{s} - T_{z}]
+H_{s} = \rho c_{p} C_{Hz} w [\theta_{s} - \theta_{z}]
 \end{equation}
 \begin{equation}\label{eq:hl}
 H_{l} = \rho L_{v} C_{Ez} w [q_{s} - q_{z}] 
 \end{equation}
 
-Sensible and latent heat flux depend on measurements of wind speed potential temperature ($\theta_{s}$ and $\theta_{z}$) and specific humidity ($q_{s}$ and $q_{z}$) at the surface and a reference height, (for this case 2 $m$ and 4 $m$). In these equations, $\rho$ is the density of the air, $c_{p}$ the specific heat of air, $L_{v}$ the latent heat of vaporization, and $C_{hz}$ and $C_{Ez}$ are the heat and moisture exchange bulk transfer coefficients \citep{foken:2008, andreas:311}. Eq. \ref{eq:chz} and \ref{eq:cez} are the generally accepted functions for estimating these coefficients. 
+Sensible and latent heat flux depend on measurements of wind speed potential temperature ($\theta_{s}$ and $\theta_{z}$) and specific humidity ($q_{s}$ and $q_{z}$) at the surface and a reference height, (for this case 2 $m$ and 4 $m$). In these equations, $\rho$ is the density of the air, $c_{p}$ the specific heat of air, $L_{v}$ the latent heat of vaporization, and $C_{hz}$ and $C_{Ez}$ are the heat and moisture exchange bulk transfer coefficients \citep{foken:2008, andreas:311}. Eq. \ref{eq:chz} and \ref{eq:cez} are the generally accepted functions for estimating these coefficients \citep{foken:2008}. 
 
 \begin{equation}\label{eq:cez}
 C_{Ez} = \frac{\kappa C_{D}^{\frac{1}{2}}}{[ln(\frac{z}{z_{0}})-\varphi_{h}]}
@@ -47,7 +44,7 @@ C_{hz} =  \kappa^{2} \left[ ln \left( \frac{z}{z_{0}} \right) - \varphi_{m} \rig
 These equations are functions of $\varphi_{m}$ and $\varphi_{h}$, the scaling parameters, which depend on the surface stability. They also require estimations of the drag coefficient ($C_{D}$) and the roughness length ($z_{0}$).
 
 \subsection{Maximum Entropy Production Method} 
-The MEP method was developed to accurately estimate surface fluxes while limiting the number of empirically-derived values and scaling parameters used. This method is based on the principle of maximum entropy and Bayesian probability theory from statistical mechanics \citep{wang:2014}. Equations \ref{eq:mep:hl}, \ref{eq:mep:hs}, and \ref{eq:mep:rn} are the MEP formulations for sensible ($H_{s}$), latent ($H_{l}$), and surface thermal ($Q_{net}$) energy flux, respectively. 
+The MEP method was developed to accurately estimate surface fluxes while limiting the number of empirically-derived values and scaling parameters used. This method is based on the principle of maximum entropy and Bayesian probability theory from statistical mechanics \citep{wang:2014}. Equations \ref{eq:mep:hl} and \ref{eq:mep:rn} are the MEP formulations for sensible ($H_{s}$) and latent ($H_{l}$), respectively. 
 
 \begin{equation}\label{eq:mep:rn}
 \left[ 1 + B(\theta) + \frac{B(\theta_{pc})}{\theta_{pc}} \frac{I_{wsi}}{I_{0}} | H_{s} | ^{-\frac{1}{6}} \right] H_{s} = Q_{net}
@@ -55,11 +52,8 @@ The MEP method was developed to accurately estimate surface fluxes while limitin
 \begin{equation}\label{eq:mep:hl}
 H_{l} = B(\theta_{pc}) H_{s}
 \end{equation}
-\begin{equation}\label{eq:mep:hs}
-Q_{net} = Q_{lw} - H_{l} - H_{s}
-\end{equation}
 
-Eq. \ref{eq:mep:b} is required by both the sensible and latent heat flux calculations and needs an estimation of the phase change parameter ($\theta_{pc}$, defined in \citep{wang:2011} as Eq. 9). Calculations of sensible and latent heat flux using this method require estimations of the thermal conductivity \citep{wang:2014} of the surface. The thermal inertia parameter of the sea ice ($I_{wsi}$ \ref{eq:iwsi}) used in the MEP equation requires the air density ($\rho$), specific heat ($c_{p}$), and thermal conductivity or the surface ($\lambda$). \citet{merkouriadi:2017} found that the thermal conductivity of snow on sea ice during N-ICE2015 was much lower than those used in many modeling studies, so the thermal inertia parameter needs to be calculated for our location using an appropriate thermal conductivity value. 
+Eq. \ref{eq:mep:b} is required by both the sensible and latent heat flux calculations and needs an estimation of the phase change parameter ($\theta_{pc}$, defined in \citep{wang:2011} as Eq. 9. Calculations of sensible and latent heat flux using this method require estimations of the thermal conductivity \citep{wang:2014} of the surface. The thermal inertia parameter of the sea ice ($I_{wsi}$, Eq. \ref{eq:iwsi}) used in the MEP equation requires the air density ($\rho$), specific heat ($c_{p}$), and thermal conductivity or the surface ($\lambda$). \citet{merkouriadi:2017} found that the thermal conductivity of snow on sea ice during N-ICE2015 was much lower than those used in many modeling studies, so the thermal inertia parameter needs to be calculated for our location using an appropriate thermal conductivity value. 
 
 \begin{equation}\label{eq:mep:b}
 B(\theta_{pc}) = 6 \left( \sqrt{1 + \frac{11}{36} \theta_{pc}} - 1 \right)
@@ -71,12 +65,12 @@ I_{wsi} = \sqrt{\rho c_{p} \lambda}
 I_{0} = \rho c_{p} \sqrt{C_{Ez}\kappa Z} \left( C_{Hz} \frac{\kappa Zg}{\rho c_{p} T_{r}} \right)^{\frac{1}{6}}
 \end{equation}
 
-$I_{0}$ can be calculated by \ref{eq:i0}. This value is called "the apparent thermal inertia of air" by \citet{wang:2009}. It depends on the heat and moisture exchange bulk transfer coefficients ($C_{hz}$ and $C_{ez}$), which are defined in the previous section. In this equation, $\kappa$ is the K\'{a}rm\'{a}n constant, $z$ is the measurements height (2 $m$ for this study), $g$ is the gravitational constant, and $T_{r}$ is a reference temperature of 300 $K$. 
+$I_{0}$ can be calculated by \ref{eq:i0}. This value is called ``the apparent thermal inertia of air" by \citet{wang:2009}. It depends on the heat and moisture exchange bulk transfer coefficients ($C_{hz}$ and $C_{ez}$), which are defined in the previous section. In this equation, $\kappa$ is the K\'{a}rm\'{a}n constant, $z$ is the measurements height (2 $m$ for this study), $g$ is the gravitational constant, and $T_{r}$ is a reference temperature of 300 $K$. 
 
 This model has been used to calculate fluxes during SHEBA with some degree of accuracy, proving its ability to perform in the polar regions \citep{wang:2014}. Note that the sign convention for the sensible and latent heat fluxes for this formulation is opposite that given in \ref{eq:seb}, however, this is taken into account in all of the analyses performed here.
 
 \subsection{Surface Stability}
-Some commonly accepted sets of equations for the empirical scaling equations ($\varphi_{h}$ and $\varphi_{m}$ for $C_{hz}$ and $C_{ez}$) are shown in Table \ref{tab:stability}. These equations use the surface-layer stability parameter (Eq. \ref{eq:zl}) to determine surface stability. These values depend on the Obukhov length ($L$ Eq. \ref{eq:l}). Obukhov length requires estimations of the covariance of the wind velocity and virtual potential temperature ($\overline{w'\theta_{v}'}$), friction velocity ($u_{*}$), and the virtual potential temperature ($\theta_{v}$). 
+Some commonly accepted sets of equations for the empirical scaling equations ($\varphi_{h}$ and $\varphi_{m}$ for $C_{hz}$ and $C_{ez}$) are shown in Table \ref{tab:stability}. These equations use the surface-layer stability parameter (Eq. \ref{eq:zl}) to determine surface stability. These values depend on the Obukhov length ($L$, Eq. \ref{eq:l}). Obukhov length requires estimations of the covariance of the wind velocity and virtual potential temperature ($\overline{w'\theta_{v}'}$), friction velocity ($u_{*}$), and the virtual potential temperature ($\theta_{v}$). 
 
 \begin{equation}\label{eq:zl}
 \zeta = \frac{z}{L}
@@ -85,7 +79,7 @@ Some commonly accepted sets of equations for the empirical scaling equations ($\
 L = -\frac{u_{*}^{3}}{\kappa \frac{g}{\theta_{s}} \overline{w'\theta_{v}'}}
 \end{equation} 
 
-Positive surface-layer stability parameter numbers indicate stable conditions and negative indicate unstable conditions. Some studies find that using an adjusted von K\'{a}rm\'{a}n constant ($\kappa$) can improve calculations \citep{businger:1971, zilitinkevitsch:1968, dyer:1970}, but changing this variable is outside the scope of this study, so only formulations using $\kappa = 0.4$ to calculate $\zeta$ are included in Table \ref{tab:stability}. 
+Positive surface-layer stability parameter numbers indicate stable conditions and negative indicate unstable conditions. Some studies find that using an adjusted von K\'{a}rm\'{a}n constant ($\kappa$) can improve calculations \citep{businger:1971, zilitinkevitsch:1968, dyer:1970, foken:2008}, but changing this variable is outside the scope of this study, so only formulations using $\kappa = 0.4$ to calculate $\zeta$ are included in Table \ref{tab:stability}. 
 
 {
 \begin{table*}[p]
@@ -122,7 +116,7 @@ Positive surface-layer stability parameter numbers indicate stable conditions an
     \label{tab:stability}
 \end{table*}}
 
-Each of the equations shown in the table have different ranges of stability to which they can be applied. These are formulated empirically, meaning they depend on measurements and are useful only under similar conditions \citep{stull:1988, foken:2008}. These equations were selected as they are those listed by \citet{foken:2008} in the book \textit{Micrometeorology} for use using the von K\'{a}rm\'{a}n constant equal to 0.4. One equation, the \citet{andreas:2010} formulation, was selected despite it being absent from the list in \citet{foken:2008}. Many of these equations, with the exception of \citet{andreas:2010}, were created under conditions observed in mid-latitudes. \citet{andreas:2010}, on the other hand, used results from the SHEBA field experiment to tune the relationships based on the Businger-Dyer-Pandolpho (BDP) relationship (Eq. \ref{eq:bdp:m} and \ref{eq:bdp:H}). This relationship is generally used for neutral and unstable conditions \citep{foken:2008}, so it requires tuning for other locations. Unlike many of the equations in Table \ref{tab:stability}, the BDP relationship requires an extra variable, $\gamma$, which is defined empirically for each location.
+Each of the equations shown in the Table \ref{tab:stability} have different ranges of stability to which they can be applied. These are formulated empirically, meaning they depend on measurements and are useful only under similar conditions \citep{stull:1988, foken:2008}. These equations were selected as they are those listed by \citet{foken:2008} in the book \textit{Micrometeorology} for use using the von K\'{a}rm\'{a}n constant equal to 0.4. One equation, the \citet{andreas:2010} formulation, was selected despite it being absent from the list in \citet{foken:2008}. Many of these equations, with the exception of \citet{andreas:2010}, were created under conditions observed in mid-latitudes. \citet{andreas:2010}, on the other hand, used results from the SHEBA field experiment to tune the relationships based on the Businger-Dyer-Pandolpho (BDP) relationship (Eq. \ref{eq:bdp:m} and \ref{eq:bdp:H}). This relationship is generally used for neutral and unstable conditions \citep{foken:2008}, so it requires tuning for other locations. Unlike many of the equations in Table \ref{tab:stability}, the BDP relationship requires an extra variable, $\gamma$, which is defined empirically for each location.
 
 \begin{equation}\label{eq:bdp:m}
 \varphi_{m}(\zeta) = (1 + \gamma \zeta)^{-1/4}
@@ -134,12 +128,12 @@ Each of the equations shown in the table have different ranges of stability to w
 \end{cases}
 \end{equation}
 
-The empirically defined $\gamma$ value seen in equation \ref{eq:bdp:m} has been calculated for N-ICE \citep{paulson:1970, chen:2001}. This value was highly variable, making the selection of one number difficult. The mean $\gamma$ value back-calculated for N-ICE was around -5 with a standard deviation of 41. At SHEBA, a value of 16 was calculated for $\gamma$. Because of the large range of calculated $\gamma$ values at N-ICE, it is difficult to capture the fluxes well by selecting just one value. This relationship is used within the MM5 Similarity Surface-layer scheme in WRF \citep{paulson:1970} and is the underlying equation handling these values in the WRF runs from Chapter 3. 
+The empirically defined $\gamma$ value seen in Eq. \ref{eq:bdp:m} \citep{paulson:1970, chen:2001} has been calculated for N-ICE. This value was highly variable, making the selection of one number difficult. The mean $\gamma$ value back-calculated for N-ICE was around -5 with a standard deviation of 41. At SHEBA, a value of 16 was calculated for $\gamma$. Because of the large range of calculated $\gamma$ values at N-ICE, it is difficult to capture the fluxes well by selecting just one value. The MM5 Similarity Surface-layer scheme in WRF \citep{paulson:1970} used in Chapter 3 bases its estimation of these scaling parameters on this relationship.
 
 The polar regions experience stronger surface inversions than in lower-latitude locations, and sometimes the stability seen in these locations is too strongly stable for other empirical stability functions to apply. Or if they do claim to be valid under those conditions, they may have little validation for large Obukhov numbers. Under these strongly stable conditions, some methods of estimating the scaling parameters break down. However, these are still the commonly selected scaling parameters and are applied over stable conditions regardless of their design. This paper will use the equations in \ref{tab:stability} with the bulk flux algorithm and MEP equations to calculate latent and sensible heat flux over first-year sea ice. The best relationship and flux equations for use at N-ICE will be selected. 
 
 \section{Observations}
-Observations from the Norwegian Young Sea Ice Field Campaign (N-ICE) were used to calculate heat fluxes. Atmospheric measurements of temperature, wind speed, and atmospheric humidity at N-ICE were measured at 20 $Hz$ at three levels (2 $m$, 4 $m$, and 10 $m$) from a meteorological tower constructed on first-year sea ice \citep{walden:2017}. The pressure was reported at sea level, and for this study was used to calculate the pressure at 2, 4, and 10 $m$ using the barometric equation \citep{lente:2020}. N-ICE took place in the Arctic Ocean north of Svalbard from January to June 2015. More information about this field campaign can be found in Chapter 2.
+Observations from the Norwegian Young Sea Ice Field Campaign (N-ICE) were used to calculate heat fluxes. Atmospheric measurements of temperature, wind speed, and atmospheric humidity at N-ICE were measured at 20 $Hz$ at three levels (2, 4, and 10 $m$) from a meteorological tower constructed on first-year sea ice \citep{walden:2017}. The pressure was reported at sea level, and for this study was used to calculate the pressure at 2, 4, and 10 $m$ using the barometric equation \citep{lente:2020}. N-ICE took place in the Arctic Ocean north of Svalbard from January to June 2015. More information about this field campaign can be found in Chapter 2.
  
  Moisture was measured and reported as relative humidity and was converted to saturation vapor pressure and specific humidity using the Clausius-Clapeyron equation \citep{iribarne:1981} along with the temperature at the corresponding tower height. The bulk algorithm requires two levels of specific humidity, but the MEP formulation only requires the surface net radiation, making it applicable for experiments that acquired measurements at only a single height. All height levels of relative humidity were converted to specific humidity so each measurement level could be used in the bulk algorithm for comparison. 
 
@@ -216,13 +210,13 @@ Thermal conductivity is used in the MEP method to calculate the thermal inertia 
 \subsection{Bulk Flux Algorithm}
 Calculating the fluxes using the bulk flux algorithm resulted in more large positive values than was seen in the EddyPro or in the MEP results. These can be seen in Figure \ref{fig:bulk:sensible}. In spring, the sensible heat flux is consistently over-estimated by the bulk flux algorithm, indicating that the temperature difference between the surface and the atmosphere is too large in the calculations, and too much heat is being transferred into the surface. The latent heat fluxes, shown in Figure \ref{fig:bulk:latent}, were also significantly larger than the EddyPro results when using the bulk flux algorithm. 
 
-\begin{figure}[h!]
+\begin{figure}[t!]
     \centering
     \includegraphics[width=1\linewidth]{figures/chapter5/BulkSensible.png}
     \caption[Sensible heat flux from a bulk flux method compared to EddyPro.]{The sensible heat flux at N-ICE as calculated with EddyPro (green) and with the bulk flux algorithm method (blue).}
     \label{fig:bulk:sensible}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[t!]
     \centering
     \includegraphics[width=1\linewidth]{figures/chapter5/BulkLatent.png}
     \caption[Latent heat flux from a bulk flux method compared to EddyPro.]{The latent heat flux at N-ICE as calculated with EddyPro (green) and with the bulk flux algorithm method (blue).}
@@ -231,10 +225,10 @@ Calculating the fluxes using the bulk flux algorithm resulted in more large posi
 
 In June, there was a large decrease in the latent heat flux according to the bulk algorithm. This was mirrored by an increase in the sensible heat flux. However, this decrease (increase) in the latent heat flux (sensible heat flux) was not seen in the EddyPro results. EddyPro produced latent heat flux values consistently around zero during this time period, while the sensible heat flux became negative. This indicates that the near-surface air was cooler than the surface and sensible heat transfer was occurring instead of a phase change. However, the bulk flux algorithm favored a phase change, likely melting, over a sensible heat flux change. At this time in the experiment, there likely was significant phase change occurring as many melt ponds were developing in the surrounding area \citep{walden:2017}. Overall, latent heat flux values estimated by the bulk equation are more largely positive in the winter and more largely negative in the summer, indicating the bulk flux algorithm shows more melting in the spring and more freezing in the winter than the EddyPro results. 
 
-Positive latent heat flux values in the winter represent surface freezing. These values are, at times, almost 10 $Wm^{-2}$ greater in the bulk results than in the EddyPro results. EddyPro, once again, favors sensible heat flux changes to phase changes. However, the sensible heat flux in the bulk algorithm and in EddyPro are comparable. This indicates that EddyPro is not just favoring the heat transfer to be in the form of sensible heat flux, but it also underestimates the latent heat flux in general, even in situations when it cannot be described by an offset in the sensible heat flux. 
+Positive latent heat flux values are, at times, almost 10 $Wm^{-2}$ greater in the bulk results than in the EddyPro results. EddyPro, once again, favors sensible heat flux changes to phase changes. However, the sensible heat flux in the bulk algorithm and in EddyPro are comparable. This indicates that EddyPro is not just favoring the heat transfer to be in the form of sensible heat flux, but it also underestimates the latent heat flux in general, even in situations when it cannot be described by an offset in the sensible heat flux. 
 
- \subsection{Maximum Entropy Method}
-Sensible heat flux from the MEP method was calculated using Eq. \ref{eq:mep:hs}. The results of this are shown in Figure \ref{fig:mep:sensible}. For most of the experiment, the MEP method accurately represented the sensible heat fluxes at N-ICE. In the winter, fluxes were slightly underestimated by the MEP equation, resulting in a bi-modal shape to the distribution shown on the right of the figure. In the spring, there was one occurrence lasting several days with largely negative sensible heat flux shown in the EddyPro results while the sensible heat fluxes from the MEP equation were positive. 
+ \subsection{Maximum Entropy Production Method}
+Sensible heat flux from the MEP method was calculated using Eq. \ref{eq:mep:rn}. The results of this are shown in Figure \ref{fig:mep:sensible}. For most of the experiment, the MEP method accurately represented the sensible heat fluxes at N-ICE. In the winter, fluxes were slightly underestimated by the MEP equation, resulting in a bi-modal shape to the distribution shown on the right of the figure. In the spring, there was one occurrence lasting several days with largely negative sensible heat flux shown in the EddyPro results while the sensible heat fluxes from the MEP equation were positive. 
 
 \begin{figure}[h!]
     \centering

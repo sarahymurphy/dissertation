@@ -1,27 +1,21 @@
 %% MEASUREMENTS
 % N-ICE
-This work was supported by the Norwegian Polar Institute's Centre for Ice, Climate and Ecosystems (ICE) through the N-ICE project, and the Research Council of Norway through the STASIS project (221961/F20). The authors would like to thank the Captains and crew of R/V Lance and all of the N-ICE2015 participants for assistance throughout the field campaign.
-
-%The N-ICE2015 campaign was supported by the Centre of Ice, Climate and Ecosystems (ICE) at the Norwegian Polar Institute through the N-ICE project. We acknowledge support from The Ministry of Climate and Environment and the Ministry of Foreign Affairs of Norway. Support was also provided through the ICE-ARC (Ice, Climate, Economics-Arctic Research on Change) programme from the European Union 7th Framework Programme, grant 603887, and the Centre for Climate Dynamics at the Bjerknes Centre through the BASIC project, and several Research Council of Norway projects, and the European Space Agency. With the contributions from the Alfred Wegener Institute (AWI) and Korean Polar Research Institute (KOPRI) the radiosonde program was made possible. We like to especially thank the captains and crews of RV Lance for the support during the challenging conditions during the field campaign. Logistics, safety training and general support from the Operations and Logistics department at the Norwegian Polar Institute are greatly acknowledged. Special thanks also to the captains and crews of the Norwegian Coast Guard vessel KV Svalbard who supported the transits from the ice edge to 83°N. We thank the Governor of Svalbard (Sysselmannen) for support with helicopter operations and the helicopter crews. We like to thank all the Scientific Editors and numerous reviewers who have made a great effort to ensure the quality of the work published in this special issue. Last but not least, we like to thank all the scientists involved. They had to work in harsh conditions in the field to collect the raw data, and have done an impressive job in a relatively short time to publish the results in this special section and beyond. The data from this campaign are made available through the Norwegian Polar Data Centre (data.npolar.no) and other data repositories. Individual data sets are cited accordingly in the individual papers of this special section.
-
-%% FUNDING SOURCES
-% Collection of NSF grants and their funding numbers
+The N-ICE field campaign was supported by the Norwegian Polar Institute's Centre for Ice, Climate and Ecosystems (ICE) through the N-ICE project, and the Research Council of Norway through the STASIS project (221961/F20). 
 
 % SCGSR Fellowship
-Idealized modeling and flux equation work (Chapters 5 and 6) are based upon work supported by the U.S. Department of Energy, Office of Science, Office of Workforce Development for Teachers and Scientists, Office of Science Graduate Student Research (SCGSR) program. The SCGSR program is administered by the Oak Ridge Institute for Science and Education (ORISE) for the DOE. ORISE is managed by ORAU under contract number DE‐SC0014664. All opinions expressed in this document are the author’s and do not necessarily reflect the policies and views of DOE, ORAU, or ORISE.
+The modeling using the idealized version of WRF and the flux equation research (Chapters 5 and 6) were partially supported by the U.S. Department of Energy, Office of Science, Office of Workforce Development for Teachers and Scientists, Office of Science Graduate Student Research (SCGSR) program. The SCGSR program is administered by the Oak Ridge Institute for Science and Education (ORISE) for the DOE. ORISE is managed by ORAU under contract number DE‐SC0014664. All opinions expressed in this document are the author’s and do not necessarily reflect the policies and views of DOE, ORAU, or ORISE.
 
-%% COMPUTATIONAL RESOURCES
 % Cheyenne
-NCAR's Cheyenne supercomputer was used for all non-idealized WRF simulations. We would like to acknowledge high-performance computing support from Cheyenne (doi:10.5065/D6RX99HX) provided by NCAR's Computational and Information Systems Laboratory, sponsored by the National Science Foundation.
-
-% PNNL Supercomputer - Constance - Do I need to acknowledge this? 
-
-% Aeolus? I used this in some WRF testing and such but ended up using Cheyenne and Constance for the results shown here.
+NCAR's Cheyenne supercomputer was used for all Polar WRF simulations except for the idealized WRF simulations. We would like to acknowledge high-performance computing support from Cheyenne (doi:10.5065/D6RX99HX) provided by NCAR's Computational and Information Systems Laboratory, sponsored by the National Science Foundation.
 
 %% PYTHON
 The author would like to thank the Python community for the open-source data science tools, including wrf-python \citep{wrfpython}, xarray \citep{xarray}, and matplotlib \citep{matplotlib}. All were used extensively throughout this dissertation. 
 
 %% PEOPLE
-Chapter 3 was made possible with help from Dr. Keith Hines (Polar Meteorology Group, Byrd Polar and Climate Research Center at The Ohio State University), who provided useful insight to help get the Polar WRF model running on the Washington State University supercomputer. Dr. Hines also assisted in some early model decision-making by giving insight into datasets and formatting best used with the model.
+Chapter 3 was made possible with help from Dr. Keith Hines (Polar Meteorology Group, Byrd Polar and Climate Research Center at The Ohio State University), who provided useful insight to help get the Polar WRF model running on the Washington State University supercomputer. Dr. Hines also assisted in some early decisions regarding the setup of Polar WRF, including insight into input data sets and formatting of WRF configuration files.
 
-Dr. Xiang-Yu Li (Pacific Northwest National Laboratory) helped with the ideal modeling setup and troubleshooting some model issues. The author would like to thank him for the helpful conversations and for taking the time to look over/help translate WRF error files.
+Dr. Xiang-Yu Li (Pacific Northwest National Laboratory) helped with the setup of the idealized WRF model and troubleshooting some model issues. The author would like to thank him for the helpful conversations and for taking the time to help translate WRF error files.
+
+Dr. Lana Cohen provided research advice from the perspective of someone who was on the ship at N-ICE and helped clarify some of the caveats of the measurement data. Conversations with her have helped with the details of Chapters 2 and 3. 
+
+This research for this dissertation was supported by the National Science Foundation grants PLR-1304657, PLR-1314248, NNA-1801764, OPP-2110341.

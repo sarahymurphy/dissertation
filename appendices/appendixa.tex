@@ -9,6 +9,7 @@
     \hspace*{3.3cm} Mellor–Yamada–Janjic (PBL)
     \item[\textbf{5-MYNN}] Model runs using: WRF Single-Moment 5-Class (CM) and \\
     \hspace*{3.3cm} Mellor–Yamada Nakanishi Niino (PBL)
+    \item[\textbf{AGU}] American Geophysical Union
     \item[\textbf{AIDJEX}] Arctic Ice Dynamics Joint Experiment
     \item[\textbf{AOE}] International Arctic Ocean Experiment
     \item[\textbf{ARM}] Atmospheric Radiation Measurements program
@@ -61,13 +62,17 @@
 \section{Constants and Variables}
 \subsection{Alphabetical}
 \begin{enumerate}
-    \item[$B(\theta_{pc})$] a scaling function of phase change parameter
+   \item[$B(\theta_{pc})$] a scaling function of phase change parameter
     \item[$C$] ocean heat flux
+    \item[$c$] heat capacity
+    \item[$c_{0}$] surface heat capacity of fresh ice
     \item[$C_{D}$] drag coefficient
     \item[$C_{Ez}$] moisture exchange bulk transfer coefficient
     \item[$C_{Hz}$] heat exchange bulk transfer coefficient
     \item[$c_{p}$] specific heat
+    \item[$c_{p}$] specific heat of air
     \item[$CRF$] cloud radiative forcing
+    \item[$D_{q}$] surface layer friction velocity constant
     \item[$F_{s}$] energy storage
     \item[$g$] asymmetry factor or gravity
     \item[$H_{l}$] latent heat flux
@@ -75,40 +80,58 @@
     \item[$I_{0}$] apparent thermal inertia of air 
     \item[$I_{wsi}$] thermal inertia parameter
     \item[$L$] Obukhov length
+    \item[$L_{i}$] latent heat of fusion
     \item[$L_{v}$] latent heat of vaporization
+    \item[$M_{avail}$] moisture availability
     \item[$Q_{all}$] cloudy sky radiation
     \item[$Q_{clear}$] clear-sky radiation
     \item[$Q_{lw \downarrow}$] longwave downward flux
     \item[$Q_{lw \uparrow}$] longwave upward flux
     \item[$Q_{net}$] net radiation
+    \item[$q_{s}$] specific humidity at the surface
     \item[$Q_{sw \downarrow}$] shortwave downward flux
     \item[$Q_{sw \uparrow}$] shortwave upward flux
-    \item[$q_{s}$] specific humidity at the surface
     \item[$q_{z}$] specific humidity at measurement height
     \item[$R$] residual flux
+    \item[$R_{b}$] bulk Richardson number
+    \item[$R_{i}$] Richardson number
     \item[$s$] surface
+    \item[$S$] salinity of ice
+    \item[$S_{i}$] vertical wind sheer
+    \item[$SN_{COVR}$] snow cover fraction
+    \item[$SN_{H}$] snow height
+    \item[$T_{ice}$] sea ice temperature
     \item[$T_{r}$] reference temperature (300K)
     \item[$T_{s}$] temperature at the surface
     \item[$T_{z}$] temperature at measurement height
     \item[$w$] wind speed
+    \item[$w_{1}$] wind speed at the first layer
     \item[$y_{mod}$] modeled value
     \item[$y_{obs}$] observed value
     \item[$z$] measurement height
     \item[$z_{0}$] roughness length
+    \item[$z_{0brd}$] background roughness length
+    \item[$z_{0eff}$] effective roughness length
+    \item[$z_{0h}$] temperature roughness length
+    \item[$z_{0q}$] moisture roughness length
+    \item[$z_{1}$] first layer height
+    \item[$z_{2}$] second layer height
+    \item[$z_{r}$] reference height
 \end{enumerate}
 \subsection{Greek Letters}
 \begin{enumerate}
     \item[$\kappa$]	K\'{a}rm\'{a}n constant
     \item[$\lambda$] thermal conductivity
+    \item[$\mu$] ocean freezing constant
     \item[$\omega$] single scattering albedo
-    \item[$\overline{w^{\prime}\theta_{v}^{\prime}}$] covariance of wind speed and virtual potential temperature
+    \item[$\overbar{w'\theta_{v}'}$] covariance of wind speed and virtual potential temperature
     \item[$\rho$] air density
     \item[$\theta$] solar zenith angle
     \item[$\theta_{pc}$] phase change parameter
-    \item[$\theta_{s}$]	potential temperature at the surface
-    \item[$\theta_{v}$]	virtual potential temperature
-    \item[$\theta_{z}$]	potential temperature at measurement height
+    \item[$\theta_{s}$] potential temperature at the surface
+    \item[$\theta_{v}$] virtual potential temperature
+    \item[$\theta_{z}$] potential temperature at measurement height
     \item[$\varphi_{h}$] scaling parameter for heat
     \item[$\varphi_{m}$] scaling parameter for moisture
-    \item[$\zeta$]	surface-layer stability parameter
+    \item[$\zeta$] surface-layer stability parameter
 \end{enumerate}
