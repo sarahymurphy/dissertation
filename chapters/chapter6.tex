@@ -13,9 +13,9 @@ Reanalysis products are often used to study Arctic climate. This poses a challen
  
 The Norwegian Young Sea Ice Experiment (N-ICE) field campaign described in Chapter 2 was the first winter field experiment in the Arctic since the Surface Heat Budget of the Arctic (SHEBA) experiment, taking place onboard a research vessel frozen into Arctic sea ice. SHEBA’s primary goals were to observe the surface energy budget, ice mass balance, and ocean-ice-atmosphere interactions in the Arctic during a year-long period from October 1997 to October 1998. Much like N-ICE, SHEBA was motivated by changes in the Arctic and the need for a better understanding of physical processes in the polar regions \citep{randall:1998}. A secondary objective of SHEBA was to improve model simulations of the Arctic for use in global climate models \citep{uttal:2002}. Both the ice-albedo feedback and the cloud-radiation feedback were extensively studied using datasets collected during this field experiment. However, this experiment occurred 18 years prior to N-ICE and in a different location of the Arctic, influenced by different synoptic conditions. 
 
- Chapter 3 of this dissertation found that the model does not accurately simulate conditions observed at N-ICE, regardless of the boundary-layer and cloud microphysics scheme selected. Chapter 4 explored the cloud radiative forcing and found that mixed-phase clouds were present throughout much of the observation period. This chapter also compared the calculated cloud radiative forcing to that observed at N-ICE and found that the cloud influence on radiation was not accurately represented in the model, particularly in the shortwave. Chapter 5 expanded on the previous chapters by looking specifically at how well equations to estimate flux do under the conditions at N-ICE. This chapter was motivated by the previous two chapters with the goal of determining if the error in the model could be reduced by improving the equations used to estimate flux. Fixing the cloud-induced error in the latent and sensible heat flux equations is impossible without first knowing how much error the equation itself introduces when the correct radiation is input.
+ As described in Chapter 3 of this dissertation, results showed that WRF-Polar does not accurately simulate conditions observed at N-ICE, regardless of the boundary-layer and cloud microphysics scheme selected. Chapter 4 explored the cloud radiative forcing and found that mixed-phase clouds were present throughout much of the observation period. This chapter also compared the calculated cloud radiative forcing to that observed at N-ICE and found that the cloud influence on radiation was not accurately represented in the model, particularly in the shortwave. Chapter 5 expanded on the previous chapters by looking specifically at how well equations to estimate flux do under the conditions at N-ICE. This chapter was motivated by the previous two chapters with the goal of determining if the error in the model could be reduced by improving the equations used to estimate flux. Fixing the cloud-induced error in the latent and sensible heat flux equations is impossible without first knowing how much error the equation itself introduces when the correct radiation is input.
 
-This chapter focuses on improving two parts of the model: the use of more appropriate surface properties for over thin sea ice and the equations used to estimate flux in the land surface model. Two separate sensitivity studies are presented here. The first explores the sensitivity of surface properties by changing value within a lookup table used by the WRF model related to the land surface. This study uses the N-ICE observations to select improved values for thin sea ice. The second sensitivity study uses the turbulent flux equations described in Chapter 5 to compare different methods for estimating sensible and latent heat fluxes. This chapter concludes by making recommendations as to which flux equations perform the best for simulations over young, thin sea ice.
+This chapter focuses on improving two parts of the model: the use of more appropriate surface properties for thin sea ice and the equations used to estimate flux in the land surface model. Two separate sensitivity studies are presented here. The first explores the sensitivity of surface properties by changing values within a lookup table used by the WRF model related to the land surface. This study uses the N-ICE observations to select improved values for thin sea ice. The second sensitivity study uses the turbulent flux equations described in Chapter 5 to compare different methods for estimating sensible and latent heat fluxes. This chapter concludes by making recommendations as to which flux equations perform the best for simulations over young, thin sea ice.
 
 \section{Methods}
 The idealized version of the Weather Research and Forecasting model \citep{skamarock:2019} was used to test the sensitivity of the model to changes in the set of parameters found in the model's land use table, LANDUSE.TBL. The idealized version of WRF is different from the ``real" version used in Chapter 3 and in forecasts. The idealized version simplifies the model by removing the effects of advection and topography. Idealized model simulations are used only in research as they create an ``idealized" atmosphere at a point in space. These simulations are not as computationally expensive or as time-consuming as running the full WRF model and are used to isolate specific parts of the model for sensitivity testing \citep{arw:2019}. 
@@ -31,22 +31,22 @@ The values in this table are generally empirically derived or directly measured 
 \doublespacing
 \begin{tabular}{| c | c | c | c | c |  c |}
 \hline
- \rowcolor[HTML]{ECECEC} \rule{0pt}{35pt} \multirow{-2}{*}{\textbf{Section}} & \multirow{-2}{*}{\textbf{Season}} & \multirow{-2}{*}{\textbf{\shortstack{Albedo\\ $(\%)$}}} & \multirow{-2}{*}{\textbf{\shortstack{Surface \\ Emissivity\\ $(\%)$}}} & \multirow{-2}{*}{\textbf{\shortstack{Surface \\ Roughness}}} & \multirow{-2}{*}{\textbf{Category}} \\ \hline
-\rule{0pt}{12pt} & Summer & 55 & .95 & 5 &  \\
-\rule{0pt}{12pt} \multirow{-2}{*}{\textbf{OLD}} & Winter & 70 & .95 & 5 & \multirow{-2}{*}{\shortstack{Permanent \\ Ice}} \\ \hline
-\rule{0pt}{12pt} & Summer & 55 & .95 & .1 &  \\
-\rule{0pt}{12pt} \multirow{-2}{*}{\textbf{USGS}} & Winter & 70 & .95 & .1 & \multirow{-2}{*}{\shortstack{Snow or Ice}} \\ \hline
-\rule{0pt}{12pt} & Summer & 55 & .95 & .1 &  \\
-\rule{0pt}{12pt} \multirow{-2}{*}{\textbf{\shortstack{MODIFIED IGBP \\ MODIS NOAH}}} & Winter & 70 & .95 & .1 & \multirow{-2}{*}{\shortstack{Snow or Ice}} \\ \hline
-\rule{0pt}{12pt} & Summer & 55 & .95 & 5 &  \\
-\rule{0pt}{12pt}\multirow{-2}{*}{\textbf{SiB}} & Winter & 70 & .95 & 5 & \multirow{-2}{*}{\shortstack{Ice Cap \\ and Glacier}} \\ \hline
-\rule{0pt}{12pt} & Summer & 55 & .95 & 1 &   \\
-\rule{0pt}{12pt}\multirow{-2}{*}{\textbf{MODIS}} & Winter & 55 & .98 & 1 & \multirow{-2}{*}{\shortstack{Snow and Ice}}  \\ \hline
-\rule{0pt}{12pt} & Summer & 55 & .95 & .1 &   \\
-\rule{0pt}{12pt}\multirow{-2}{*}{\textbf{SSIB}} & Winter & 70 & .95 & .1 & \multirow{-2}{*}{\shortstack{Snow or Ice}}  \\ \hline
- \rule{0pt}{12pt} & Summer & 60 & .95 & 1.2 & \\
-\rule{0pt}{12pt} \multirow{-2}{*}{\textbf{NLCD40}} & Winter & 60 & .95 & 1.2 & \multirow{-2}{*}{\shortstack{Permanent \\ Snow and Ice}} \\ \hline
-\rule{0pt}{15pt} \textbf{LW12} & All & 70 & .95 & 5 & \shortstack{Snow and Ice} \\ \hline
+ \rowcolor[HTML]{ECECEC} \rule{0pt}{35pt} \multirow{-2}{*}{\textbf{Section}} & \multirow{-2}{*}{\textbf{Season}} & \multirow{-2}{*}{\textbf{\shortstack{Albedo\\ $(\%)$}}} & \multirow{-2}{*}{\textbf{\shortstack{Surface \\ Emissivity\\ $(\%)$}}} & \multirow{-2}{*}{\textbf{\shortstack{Roughness Length}}} & \multirow{-2}{*}{\textbf{Category}} \\ \hline
+\rule{0pt}{12pt} & Summer & 55 & 95 & 5 &  \\
+\rule{0pt}{12pt} \multirow{-2}{*}{\textbf{OLD}} & Winter & 70 & 95 & 5 & \multirow{-2}{*}{\shortstack{Permanent \\ Ice}} \\ \hline
+\rule{0pt}{12pt} & Summer & 55 & 95 & .1 &  \\
+\rule{0pt}{12pt} \multirow{-2}{*}{\textbf{USGS}} & Winter & 70 & 95 & .1 & \multirow{-2}{*}{\shortstack{Snow or Ice}} \\ \hline
+\rule{0pt}{12pt} & Summer & 55 & 95 & .1 &  \\
+\rule{0pt}{12pt} \multirow{-2}{*}{\textbf{\shortstack{MODIFIED IGBP \\ MODIS NOAH}}} & Winter & 70 & 95 & .1 & \multirow{-2}{*}{\shortstack{Snow or Ice}} \\ \hline
+\rule{0pt}{12pt} & Summer & 55 & 95 & 5 &  \\
+\rule{0pt}{12pt}\multirow{-2}{*}{\textbf{SiB}} & Winter & 70 & 95 & 5 & \multirow{-2}{*}{\shortstack{Ice Cap \\ and Glacier}} \\ \hline
+\rule{0pt}{12pt} & Summer & 55 & 95 & 1 &   \\
+\rule{0pt}{12pt}\multirow{-2}{*}{\textbf{MODIS}} & Winter & 55 & 98 & 1 & \multirow{-2}{*}{\shortstack{Snow and Ice}}  \\ \hline
+\rule{0pt}{12pt} & Summer & 55 & 95 & .1 &   \\
+\rule{0pt}{12pt}\multirow{-2}{*}{\textbf{SSIB}} & Winter & 70 & 95 & .1 & \multirow{-2}{*}{\shortstack{Snow or Ice}}  \\ \hline
+ \rule{0pt}{12pt} & Summer & 60 & 95 & 1.2 & \\
+\rule{0pt}{12pt} \multirow{-2}{*}{\textbf{NLCD40}} & Winter & 60 & 95 & 1.2 & \multirow{-2}{*}{\shortstack{Permanent \\ Snow and Ice}} \\ \hline
+\rule{0pt}{15pt} \textbf{LW12} & All & 70 & 95 & 5 & \shortstack{Snow and Ice} \\ \hline
 \end{tabular}
 \caption[Snow and ice settings in LANDUSE.TBL.]{Current settings for snow and ice in the LANDUSE.TBL file used by WRF.}
 \label{tab:wrf:landusetbl}
@@ -77,7 +77,7 @@ Albedo values specified in Table \ref{tab:wrf:landusetbl} do not exceed 70$\%$, 
 \end{table}
 
 \subsubsection{Surface Heat Capacity}
-The surface heat capacity of sea ice is shown in Eq. \ref{ch5:c}. In this equation, $c$ is the heat capacity in $\frac{J}{kg K}$. To calculate the surface heat capacity, the salinity of the ice ($S$, $ppt$), the sea ice temperature ($T$, $K$), the heat capacity of fresh ice ($c_{0}$, $2054 J(kg~K)^{-1}$), the latent heat of fusion ($L_{i}$, $3.340 \times 10^{5} Jkg^{-1}$), and the ocean freezing temperature constant ($\mu$, 0.054 $^{\circ}C~ppt^{-1}$, selected considering salinity) must be specified. 
+The surface heat capacity of sea ice is shown in Eq. \ref{ch5:c}. In this equation, $c$ is the heat capacity in $\frac{J}{kg K}$. To calculate the surface heat capacity, the salinity of the ice ($S$, $ppt$), the sea ice temperature ($T$, $^{\circ} C$), the heat capacity of fresh ice ($c_{0}$, $2054 J(kg~K)^{-1}$), the latent heat of fusion ($L_{i}$, $3.340 \times 10^{5} Jkg^{-1}$), and the ocean freezing temperature constant ($\mu$, 0.054 $^{\circ}C~ppt^{-1}$, selected considering salinity) must be specified. 
 
 \begin{equation}\label{ch5:c}
 c = c_{0} + \frac{L_{i}\mu S}{T_{ice}^{2}}
@@ -130,7 +130,7 @@ R_{b} = \frac{gz_{1}}{\theta_{a}}\frac{\theta_{1} - \theta_{s}}{(w_{1})^{2}}
 R_{i} = \frac{g}{\theta_{a}S_{i}^{2}} \frac{\theta_{i+.5} - \theta_{i-.5}}{z_{i+.5} - z_{i-.5}}
 \end{equation}
 
-The Noah LSM \citep{chen:2001} was used in all model runs in Chapter 3 and is the LSM used for this study. Polar WRF modifies the Noah LSM for optimized use over the Arctic, including improvements to the surface energy balance and sea ice \citep{hines:2015, bromwich:2009}. The LSM uses atmospheric information from the SL scheme and precipitation/radiation from the cloud microphysics (CM) and convective schemes to calculate the vertical transport, turbulent fluxes (sensible and latent heat fluxes shown in Eq. \ref{eq:wrf:h}, \ref{eq:wrf:e}) in the lowest layers of the atmosphere, as well as the friction velocity (Eq. \ref{eq:wrf:ustar}) and roughness length (Eq. \ref{eq:wrf:z0}). The Noah LSM does this using 4 soil temperature and moisture layers \citep{dudhia:2014, skamarock:2019}. This particular LSM, with the polar improvements created by The Polar Meteorology Group at the Ohio State University Byrd Polar Research Center implemented, can fractional snow cover, with snow cover thicknesses allowed to vary throughout the simulation \cite{chen:2001}. These Polar improvements also enable the user to specify the sea ice thickness and sea ice albedo \citep{hines:2015}.
+The Noah LSM \citep{chen:2001} was used in all model runs in Chapter 3 and is the LSM used for this study. Polar WRF modifies the Noah LSM for optimized use over the Arctic, including improvements to the surface energy balance and sea ice \citep{hines:2015, bromwich:2009}. The LSM uses atmospheric information from the SL scheme and precipitation/radiation from the cloud microphysics (CM) and convective schemes to calculate the vertical transport, turbulent fluxes (sensible and latent heat fluxes shown in Eq. \ref{eq:wrf:h}, \ref{eq:wrf:e}) in the lowest layers of the atmosphere, as well as the friction velocity (Eq. \ref{eq:wrf:ustar}) and roughness length (Eq. \ref{eq:z0}). The Noah LSM does this using 4 soil temperature and moisture layers \citep{dudhia:2014, skamarock:2019}. This particular LSM, with the polar improvements created by The Polar Meteorology Group at the Ohio State University Byrd Polar Research Center implemented, includes fractional snow cover, with snow cover thicknesses allowed to vary throughout the simulation \cite{chen:2001}. These Polar improvements also enable the user to specify the sea ice thickness and sea ice albedo \citep{hines:2015}.
 
 \begin{equation}\label{eq:wrf:h}
 H_{s} = \rho c_{p} u^{*} \theta_{*} = \rho c_{p} C_{hs} \delta \theta
@@ -173,8 +173,8 @@ The idealized version of WRF was run twice, once with the default LANDUSE.TBL op
      \textbf{Roughness}}} 
      & \multirow{-2}{*}{\shortstack{\textbf{Thermal} \\ \textbf{Inertia} \\ \textbf{Constant}}}  & \multirow{-2}{*}{\shortstack{\textbf{Surface Heat} \\ \textbf{Capacity} \\ $(J~m^{-3} K^{-1})$}}  \\
  \hline
-\textbf{NICE}  & Winter  & 86 & .98 & .001 & 5 & $1.8 \times 10^{6}$ \\
- \textbf{NICE}     & Summer  & 81 & .98 & .001 & 5 & $1.8 \times 10^{6}$ \\
+\textbf{NICE}  & Winter  & 86 & 98 & .001 & 5 & $1.8 \times 10^{6}$ \\
+ \textbf{NICE}     & Summer  & 81 & 98 & .001 & 5 & $1.8 \times 10^{6}$ \\
   \hline
 \end{tabular}}
 \caption[Recommended LANDUSE.TBL values.]{Recommended changes to the LANDUSE.TBL file for simulations over first-year sea ice. Original LANDUSE.TBL file settings for snow/ice can be seen in Table \ref{tab:wrf:landusetbl}}
@@ -204,7 +204,7 @@ The idealized version of WRF was run twice, once with the default LANDUSE.TBL op
 \hline
 \cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Modified} & 1.6 &	-3.86 &	-54.83	& -11.69 &	111.15 &	81.96 \\
 \cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Original} & -0.2 &	-9.81 &	0.34 &	-19.14 &	50.2 &	33.21 \\
-\cellcolor[HTML]{F3F3F3} \multirow{-3}{*}{\shortstack{\textbf{Spring} \\ \textbf{Cloudy}}} & \cellcolor[HTML]{F3F3F3} \textbf{Difference} & 1.8 &	5.95 &	-55.17	& 7.45	& 60.95 &	48.75 \\
+\cellcolor[HTML]{F3F3F3} \multirow{-3}{*}{\shortstack{\textbf{Spring} \\ \textbf{Cloudy}}} & \cellcolor[HTML]{F3F3F3} \textbf{Difference} & 1.8 &	5.95 &	-55.17	& -7.45	& 60.95 &	48.75 \\
 \hline
 \cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Modified} & 3.98	& -2.25 &	-36.17 &	-5.58 &	50.4 &	48.41 \\
 \cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Original} & 4.81	& 0.23	& -8.15 & 	-13.31	& 13.39	& 15.04 \\
@@ -262,7 +262,7 @@ The last case study period is from 22 May to 24 May, when the N-ICE field site e
     \label{fig:c3:heat}
 \end{figure}
 
-Latent and sensible heat flux values (Figure \ref{fig:c3:heat} were similar between the two model runs past the first 24 hours. They did differ during the first day when the models had disagreements about the cloud cover. The model originally overestimated these fluxes during this time period, so even a small decrease in these values could be an improvement. Table \ref{tab:meanbias} shows that the latent heat flux bias decreased by almost 1 $Wm^{-2}$ with the modifications, but the sensible heat flux bias increased. 
+Latent and sensible heat flux values (Figure \ref{fig:c3:heat}) were similar between the two model runs past the first 24 hours. They did differ during the first day when the models had disagreements about the cloud cover. The model originally overestimated these fluxes during this time period, so even a small decrease in these values could be an improvement. Table \ref{tab:meanbias} shows that the latent heat flux bias decreased by almost 1 $Wm^{-2}$ with the modifications, but the sensible heat flux bias increased. 
 
 \subsection{Turbulent Flux Equations}
 Throughout the entire field expedition, the WRF offline calculation did a surprisingly good job of replicating the sensible heat flux observations. Figure \ref{fig:flux:sensible} shows the observations in black and the WRF offline calculation in magenta. It is often hard to see the modeled values in the time series because they are so close to the observations that many of the points overlap each other, and they create a well-defined 1:1 line on the scatter plot. This indicates that errors in estimating the sensible heat flux are likely due to the errors in values being calculated schemes outside of the SL scheme and LSM. 
