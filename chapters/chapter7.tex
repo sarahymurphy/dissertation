@@ -27,6 +27,8 @@ More testing needs to be done to determine if these values are best under specif
   \item Decreased surface heat capacity and use a different value for winter and summer (column 6, Table \ref{tab:wrf:recommendations})
 \end{enumerate}
 
+\citet{floors:2023} measured surface roughness lengths over all land surfaces using several different remote-sensing techniques. All of their roughness length values for surfaces similar to that seen at N-ICE were between 0.005 $m$ and 0.001 $m$, further proving that the roughness length over the snow surface is less than the 0.1 $m$ specified by the model.
+
 \subsection{Turbulent Flux Equations}
 Latent and sensible heat flux values in WRF are calculated within the surface modules using meteorology from the BL scheme and radiation from the radiation scheme. In this study, all physics schemes except for the surface layer (SL) scheme were removed and were run "offline", using the idealized version of WRF at a single location to calculate sensible and latent heat fluxes. When observed radiation, wind, temperature, and moisture values were used as input to the offline model, the calculated sensible heat flux values were quite accurate compared to the N-ICE measurements. The latent heat fluxes, however, were not and often had significantly larger negative values than what was observed. The latent heat flux at N-ICE could not be accurately replicated by the offline WRF calculation or any of the external ways of calculating it. Chapter 3 shows that all WRF simulations struggled to replicate the latent heat flux. Chapter 5 describes several methods for calculating the latent heat flux, but none accurately represented the latent heat flux seen at N-ICE.
 

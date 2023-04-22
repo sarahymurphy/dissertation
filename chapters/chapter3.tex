@@ -29,7 +29,11 @@ The WRF model version 4.1.4 was run with polar optimizations created by research
     \label{fig:wrf_domain}
 \end{figure}
 
-A 2-way nested, two-domain (parent and nested domain) setup was used and can be seen in Figure \ref{fig:wrf_domain}. The nested domain (d02) used 3 $km$ by 3 $km$ grid cells, located just north of Svalbard and encompassing the entire spatial extent of the N-ICE field campaign. The larger domain, or the parent domain, used 9 $km$ by 9 $km$ grid cells. The European Centre for Medium-Range Weather Forecasting’s Interim Re-Analysis (ERA-Interim) was used for boundary and initial conditions \citep{dee:2011}, Pan-Arctic Ice Ocean Modeling and Assimilation System (PIOMAS) was used for snow depth, ice thickness, and albedo \citep{PIOMASS}, and Special Sensor Microwave/Imager (SSMI) was input for ice extent information \citep{SSMI, schweiger:2011}. \citet{graham:2017} includes a comparison of the ERA-Interim dataset and the measurements taken during N-ICE. While \citet{graham:2017} found that ERA-Interim accurately portrayed the cloudy and clear states, there were still issues with the cloud liquid water path being underestimated, which should be taken into consideration when looking at the WRF results. The model was run for two periods: winter (January through March) and spring (April through June). Comparison with the N-ICE measurements for these periods start on 15 January and 18 April, resulting in 15+ days of spin-up time of the Polar WRF model before analysis. The simulations were completed using the Cheyenne supercomputer \citep{cheyenne}. More details about model settings are shown in Table \ref{tab:setup}. 
+A 2-way nested, two-domain (parent and nested domain) setup was used and can be seen in Figure \ref{fig:wrf_domain}. The nested domain (d02) used 3 $km$ by 3 $km$ grid cells, located just north of Svalbard and encompassing the entire spatial extent of the N-ICE field campaign. The larger domain, or the parent domain, used 9 $km$ by 9 $km$ grid cells. 
+
+The European Centre for Medium-Range Weather Forecasting’s Interim Re-Analysis (ERA-Interim) was used for boundary and initial conditions \citep{dee:2011}, Pan-Arctic Ice Ocean Modeling and Assimilation System (PIOMAS) was used for snow depth, ice thickness, and albedo \citep{PIOMASS}, and Special Sensor Microwave/Imager (SSMI) was input for ice extent information \citep{SSMI, schweiger:2011}. The initial conditions set the conditions at the start of the model as close to reality as possible. Boundary conditions bring synoptic-scale weather systems into the model at the domain edges. \citet{graham:2017} includes a comparison of the ERA-Interim dataset and the measurements taken during N-ICE. While \citet{graham:2017} found that ERA-Interim accurately portrayed the cloudy and clear states, there were still issues with the cloud liquid water path being underestimated, which should be taken into consideration when looking at the WRF results. Large-scale synoptic systems, however, were simulated well, limiting the error possibly due to incorrect advection.
+
+The model was run for two periods: winter (January through March) and spring (April through June). Comparison with the N-ICE measurements for these periods start on 15 January and 18 April, resulting in 15+ days of spin-up time of the Polar WRF model before analysis. The simulations were completed using the Cheyenne supercomputer \citep{cheyenne}. More details about model settings are shown in Table \ref{tab:setup}. 
 
 \begin{table}[t]
 \centering
@@ -97,14 +101,14 @@ The Goddard (G) scheme \citep{tao:2000} and WRF Single-Moment 5-Class (5) scheme
 
 \begin{figure}[p!]
     \centering
-        \vspace*{-1cm}
+        \vspace*{-2.5cm}
     \includegraphics[width=1\linewidth]{figures/chapter3/WRF_totaltimeseries.png}
-    \caption[Polar WRF simulated temperature, pressure, sensible and latent heat flux, components of longwave and shortwave flux, and cloud fraction time series.]{Daily averages of temperature (top), sensible heat flux (second from top), latent heat flux (third), upward and downward longwave flux (fourth and fifth), upward and downward shortwave flux (sixth and seventh), and cloud fraction (bottom). Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
+    \caption[Polar WRF simulated pressure, temperature, sensible and latent heat flux, components of longwave and shortwave flux, and cloud fraction time series.]{Daily averages of pressure (top), temperature (second from top) sensible heat flux (third), latent heat flux (fourth), upward and downward longwave flux (fifth and sixth), upward and downward shortwave flux (seventh and eighth), and cloud fraction (bottom). Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
     \label{fig:wrf_all}
 \end{figure}
 
 \section{Results}
-Atmospheric conditions at the grid cell containing the ship were selected from the model output. Time series of the temperature, sensible and latent heat fluxes, components of longwave and shortwave flux, and cloud fraction in the model grid cell at the ship location can be seen in Figure \ref{fig:wrf_all}. While it is difficult to see fine details in these panels, the P3-YSU scheme stands out during both the winter and spring, with particularly low values of temperature, upward longwave flux, and downward longwave flux. Additionally, cloud fraction values are greatly varied between model runs, and are often not in agreement with the observations. Further analysis of each variable is included in the following subsections.
+Atmospheric conditions at the grid cell containing the ship were selected from the model output. Time series of the pressure, temperature, sensible and latent heat fluxes, components of longwave and shortwave flux, and cloud fraction in the model grid cell at the ship location can be seen in Figure \ref{fig:wrf_all}. While it is difficult to see fine details in these panels, the P3-YSU scheme stands out during both the winter and spring, with particularly low values of temperature, upward longwave flux, and downward longwave flux. Additionally, cloud fraction values are greatly varied between model runs, and are often not in agreement with the observations. Further analysis of each variable is included in the following subsections.
 
 Eq. \ref{eq:modbias} was used to calculate mean model biases from the time series for skin temperature ($K$), latent heat flux ($Wm^{-2}$), sensible heat flux ($Wm^{-2}$), net longwave flux ($Q_{sw}$, $Wm^{-2}$, Eq. \ref{eq:netlwflux}), and net shortwave flux ($Q_{sw}$, $Wm^{-2}$, Eq. \ref{eq:netswflux}) and are shown in Table \ref{tab:meanbias} for winter (top) and spring (bottom). In this equation, $y_{mod}$ is the modeled value and $y_{obs}$ is the observed value.
  
@@ -167,7 +171,7 @@ G-MYJ had the smallest mean temperature bias in winter. For spring, 2-MYJ had th
 \begin{figure}[b!]
     \centering
     \includegraphics[width=1\linewidth]{figures/chapter3/WRF_TSK_Histo.png}
-    \caption[Polar WRF simulated temperature histograms.]{Temperature for the entire observational period (top), winter (middle), and spring (bottom) for each of the Polar WRF runs. Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
+    \caption[Polar WRF simulated temperature histograms.]{Temperature for the entire observational period (top), winter (middle), and spring/summer (bottom) for each of the Polar WRF runs. Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
     \label{fig:wrf_tsk}
 \end{figure}
 
@@ -179,7 +183,7 @@ In the winter, P3-YSU had the lowest bias in longwave flux. All other model simu
   \begin{figure}[t]
     \centering
     \includegraphics[width=1\linewidth]{figures/chapter3/WRF_NetLW_Histo.png}
-    \caption[Polar WRF simulated net longwave flux histograms.]{Net longwave flux at the surface for the entire observational period (top), winter (middle), and spring (bottom) for each of the Polar WRF runs. Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
+    \caption[Polar WRF simulated net longwave flux histograms.]{Net longwave flux at the surface for the entire observational period (top), winter (middle), and sprin/summmer (bottom) for each of the Polar WRF runs. Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
     \label{fig:wrf_netlw}
 \end{figure}
 
@@ -231,7 +235,7 @@ Figures \ref{fig:wrf_hlf} and \ref{fig:wrf_shf} show the latent and sensible hea
 
 In the spring, the calculations of the latent heat flux were similar in all the model simulations but varied more largely than the measurements. The measurements peaked at zero with limited spread, slightly favoring the negative values (melting, sublimation, or evaporation). All the model simulations, however, overestimated the amount of melting/sublimation/evaporation that was occurring by overestimating the amount of negative latent heat flux. 
 
-In the winter, the calculation of sensible heat flux is incorrect in all of the model simulations and is most influenced by the PBL scheme. The YSU PBL scheme shows a peak between 0 and 10 $Wm^{-2}$, but a smaller spread than the measurements, indicating that this scheme is underestimating the near-surface lapse rate. The MYJ PBL scheme, however, has the opposite problem. The spread is too large, indicating that the fluxes between the surface and atmosphere are too large, resulting from a larger lapse rate. Neither scheme accurately represents the distribution of the measurements, which is less steep at positive flux values. The runs using the MYNN PBL scheme had the lowest flux bias values.
+In the winter, the calculation of sensible heat flux is incorrect in all of the model simulations and is most influenced by the PBL scheme. The YSU PBL scheme shows a peak between 0 and 10 $Wm^{-2}$, but a smaller spread than the measurements, indicating that this scheme is not accurately representing the near-surface temperature structure. The MYJ PBL scheme, however, has the opposite problem, with a larger range of values. Neither scheme accurately represents the distribution of the measurements, which is less steep at positive flux values. The runs using the MYNN PBL scheme had the lowest flux bias values.
 
 The sensible heat fluxes in spring peak just below 0 $Wm^{-2}$ in the measurements, but were slightly positive in the model simulations, indicating that the model predicted the atmosphere was warmer than the surface and flux was going into the surface. The MYJ PBL scheme predicted a small secondary peak slightly negative that was also captured in the measurements, but the shape, value, and magnitude of this peak were incorrectly simulated by the model. The sensible heat flux calculations by the MYJ PBL scheme compare well to the measurements; the MYNN PBL scheme performs worse. The measurements and the 2-MYNN simulation both show a large spread with slightly more negative sensible heat fluxes than the other simulations. This indicates that there is a greater flux out of the surface in the 2-MYNN scheme and in the measurements, as the surface temperature is less than the air temperature.
 
@@ -242,7 +246,7 @@ The sensible heat fluxes in spring peak just below 0 $Wm^{-2}$ in the measuremen
 \begin{figure}[p]
     \centering \hspace*{-0.75cm}
     \includegraphics[width=1.1\linewidth]{figures/chapter3/wrf_case1.png}
-    \caption[Polar WRF Case 1 - Winter cold front (5 Feb 2015) time series]{6-hourly values of WRF modeled output (rainbow, acronyms in legend defined in Table \ref{tab:schemes}) and observations (black) for temperature, sea level pressure, sensible heat flux, latent heat flux, downward longwave flux, upward longwave flux, and cloud fraction during the cold-frontal passage from 4 Feb to 8 Feb 2015.}
+    \caption[Polar WRF Case 1 - Winter cold front (5 Feb 2015) time series]{6-hourly values of WRF modeled output (rainbow, acronyms in legend defined in Table \ref{tab:schemes}) and observations (black) for sea level pressure, temperature, sensible heat flux, latent heat flux, downward longwave flux, upward longwave flux, and cloud fraction during the cold-frontal passage from 4 Feb to 8 Feb 2015.}
     \label{fig:wrf_case1}
 \end{figure}
 
@@ -256,9 +260,11 @@ The two simulations using the Morrison 2-Moment CM scheme performed the best in 
 
 \subsubsection{Case 2 - A Spring Clear-Sky Day, 23 May 2015}
 \begin{figure}[p!]
-    \centering \hspace*{-0.75cm}
+    \centering 
+        \vspace*{-2.5cm}
+    \hspace*{-0.75cm} 
     \includegraphics[width=1.1\linewidth]{figures/chapter3/wrf_case2.png}
-    \caption[Polar WRF Case 3 - Spring clear-sky (23 May 2015) time series]{6-hourly values for WRF modeled output (6-hourly, rainbow, acronyms in legend defined in Table \ref{tab:schemes}) and observations (6-hourly, black) for temperature, sea level pressure, sensible heat flux, latent heat flux, downward longwave flux, upward longwave flux, downward shortwave flux, upward shortwave flux, and cloud fraction during the spring clear-sky period from 22 May to 25 May 2015.}
+    \caption[Polar WRF Case 3 - Spring clear-sky (23 May 2015) time series]{6-hourly values for WRF modeled output (rainbow, acronyms in legend defined in Table \ref{tab:schemes}) and observations (black) for sea level pressure, temperature, sensible heat flux, latent heat flux, downward longwave flux, upward longwave flux, downward shortwave flux, upward shortwave flux, and cloud fraction during the spring clear-sky period from 22 May to 25 May 2015.}
     \label{fig:wrf_case2}
 \end{figure}
 
