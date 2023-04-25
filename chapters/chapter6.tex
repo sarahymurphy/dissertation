@@ -28,10 +28,11 @@ The values in this table are generally empirically derived or directly measured 
 \footnotesize
 \center
 \centering
+\hspace*{-0.7cm}
 \doublespacing
 \begin{tabular}{| c | c | c | c | c |  c |}
 \hline
- \rowcolor[HTML]{ECECEC} \rule{0pt}{35pt} \multirow{-2}{*}{\textbf{Section}} & \multirow{-2}{*}{\textbf{Season}} & \multirow{-2}{*}{\textbf{\shortstack{Albedo\\ $(\%)$}}} & \multirow{-2}{*}{\textbf{\shortstack{Surface \\ Heat Capacity \\ ($Jm^{-3}K^{-1}$}}} & \multirow{-2}{*}{\textbf{\shortstack{Roughness Length}}} & \multirow{-2}{*}{\textbf{Category}} \\ \hline
+ \rowcolor[HTML]{ECECEC} \rule{0pt}{35pt} \multirow{-2}{*}{\textbf{Section}} & \multirow{-2}{*}{\textbf{Season}} & \multirow{-2}{*}{\textbf{\shortstack{Albedo\\ $(\%)$}}} & \multirow{-2}{*}{\textbf{\shortstack{Surface \\ Heat Capacity \\ ($Jm^{-3}K^{-1}$)}}} & \multirow{-2}{*}{\textbf{\shortstack{Roughness Length \\ $(m)$}}} & \multirow{-2}{*}{\textbf{Category}} \\ \hline
 \rule{0pt}{12pt} & Summer & 55 & $9 \times 10^{25}$ & 5 &  \\
 \rule{0pt}{12pt} \multirow{-2}{*}{\textbf{OLD}} & Winter & 70 & $9 \times 10^{25}$ & 5 & \multirow{-2}{*}{\shortstack{Permanent \\ Ice}} \\ \hline
 \rule{0pt}{12pt} & Summer & 55 & $9 \times 10^{25}$ & .1 &  \\
@@ -41,7 +42,7 @@ The values in this table are generally empirically derived or directly measured 
 \rule{0pt}{12pt} & Summer & 55 & $9 \times 10^{25}$ & 5 &  \\
 \rule{0pt}{12pt}\multirow{-2}{*}{\textbf{SiB}} & Winter & 70 & $9 \times 10^{25}$ & 5 & \multirow{-2}{*}{\shortstack{Ice Cap \\ and Glacier}} \\ \hline
 \rule{0pt}{12pt} & Summer & 55 & $9 \times 10^{25}$ & 1 &   \\
-\rule{0pt}{12pt}\multirow{-2}{*}{\textbf{MODIS}} & Winter & 55 & 98 & 1 & \multirow{-2}{*}{\shortstack{Snow and Ice}}  \\ \hline
+\rule{0pt}{12pt}\multirow{-2}{*}{\textbf{MODIS}} & Winter & 55 & $9 \times 10^{25}$ & 1 & \multirow{-2}{*}{\shortstack{Snow and Ice}}  \\ \hline
 \rule{0pt}{12pt} & Summer & 55 & $9 \times 10^{25}$ & .1 &   \\
 \rule{0pt}{12pt}\multirow{-2}{*}{\textbf{SSIB}} & Winter & 70 & $9 \times 10^{25}$ & .1 & \multirow{-2}{*}{\shortstack{Snow or Ice}}  \\ \hline
  \rule{0pt}{12pt} & Summer & 60 & $9 \times 10^{25}$ & 1.2 & \\
@@ -85,7 +86,7 @@ c = c_{0} + \frac{L_{i}\mu S}{T_{ice}^{2}}
 
 Ice cores were taken at N-ICE to measure ice temperature and salinity. Mean sea ice surface temperatures for winter and spring were -22.77 $^{\circ}C$ and -4.09 $^{\circ}C$, respectively. In the winter, ice surface temperature had a large range and varied as much as 30 $^{\circ}C$ in a month. In the spring, surface temperatures were much more consistent, and showed a slow increase up to freezing.
 
-The salinity varied from 2 $g~kg^{-1}$ to 11 $g~kg^{-1}$ during both winter and spring, with little difference in the seasonal averages. The mean salinity was 6.08 $g~kg^{-1}$ for the entire experiment. Using Eq. \ref{ch5:c} with these values yields a surface heat capacity of approximately $1.83 \times 10^{6} Jm^{-3}K^{-1}$. Accounting for the snow density, the surface heat capacity is, on average, approximately $6.4 \tiems 10^{5}$. These values are all several orders of magnitude smaller than what is specified in LANDUSE.TBL. The sensible heat flux in the model has been set to an essentially infinite value over water, snow, and ice.
+The salinity varied from 2 $g~kg^{-1}$ to 11 $g~kg^{-1}$ during both winter and spring, with little difference in the seasonal averages. The mean salinity was 6.08 $g~kg^{-1}$ for the entire experiment. Using Eq. \ref{ch5:c} with these values yields a surface heat capacity of approximately $1.83 \times 10^{6} Jm^{-3}K^{-1}$. Accounting for the snow density, the surface heat capacity is, on average, approximately $6.4 \times 10^{5}$. These values are all several orders of magnitude smaller than what is specified in LANDUSE.TBL. The sensible heat flux in the model has been set to an essentially infinite value over water, snow, and ice.
 
 \subsubsection{Roughness Length}
 Roughness length ($z_{0}$) is defined in Eq. \ref{eq:z0} and requires wind speed ($w_{1}$ and $w_{2}$) at two heights ($z_{1}$ and $z_{2}$), the von K\'{a}rm\'{a}n constant (0.4), and the friction velocity ($u^{*}$). 
@@ -157,24 +158,19 @@ To calculate the sensible heat flux, the model must also calculate the surface s
 \subsection{Sensitivity to Surface Properties}
 The idealized version of WRF was run twice, once with the default LANDUSE.TBL options (Table \ref{tab:wrf:landusetbl}, USGS section) and once with values calculated from N-ICE observations. Table \ref{tab:wrf:recommendations} shows the values calculated above that were used in the modified LANDUSE.TBL. Everything else was held constant and the European Centre for Medium-Range Weather Forecasting’s (ECMWF) Interim Re-Analysis (ERA-Interim) dataset was used as input. The WRF model code is written in FORTRAN and has different files for each scheme. The FORTRAN code for the SL scheme was translated to a Python code, allowing for easy modifications and running of the code. 
 
-\begin{table}[b]
+\begin{table}[t]
 \centering
 \footnotesize
 \doublespacing
 {
-\begin{tabular}{| c | c | c | c | c | c | c |}
+\begin{tabular}{| c | c | c | c | c |}
  \hline
      \rowcolor[HTML]{F3F3F3} \rule{0pt}{35pt}  
-     \multirow{-2}{*}{\textbf{Section}}  
-     & \multirow{-2}{*}{\textbf{Season}}  
-     & \multirow{-2}{*}{\shortstack{\textbf{Albedo} \\  $(\%)$}}  
-     & \multirow{-2}{*}{\shortstack{\textbf{Surface} \\ \textbf{Emissivity} \\ $(\%)$}}  
-     & \multirow{-2}{*}{\shortstack{\textbf{Surface} \\
-     \textbf{Roughness}}} 
-     & \multirow{-2}{*}{\shortstack{\textbf{Thermal} \\ \textbf{Inertia} \\ \textbf{Constant}}}  & \multirow{-2}{*}{\shortstack{\textbf{Surface Heat} \\ \textbf{Capacity} \\ $(J~m^{-3} K^{-1})$}}  \\
+     \multirow{-2}{*}{\textbf{Section}}  & \multirow{-2}{*}{\textbf{Season}}  & \multirow{-2}{*}{\shortstack{\textbf{Albedo} \\  $(\%)$}} & \multirow{-2}{*}{\shortstack{\textbf{Roughness} \\
+     \textbf{Length} \\ ($m$)}} & \multirow{-2}{*}{\shortstack{\textbf{Surface Heat} \\ \textbf{Capacity} \\ $(J~m^{-3} K^{-1})$}}  \\
  \hline
-\textbf{NICE}  & Winter  & $70 \rightarrow 86$ & $98$ & $0.1 \rightarrow .001$ & $5$ & $9 \times 10^{25} \rightarrow 6 \times 10^{5}$ \\
- \textbf{NICE}     & Summer  &  $55 \rightarrow 81$ & $98$ & $0.1 \rightarrow .001$ & $5$ & $9 \times 10^{25} \rightarrow 6 \times 10^{5}$ \\
+\textbf{NICE}  & Winter  & $70 \rightarrow 86$ & $0.1 \rightarrow .001$ & $9 \times 10^{25} \rightarrow 6 \times 10^{5}$ \\
+\textbf{NICE}  & Summer  & $55 \rightarrow 81$ & $0.1 \rightarrow .001$ & $9 \times 10^{25} \rightarrow 6 \times 10^{5}$ \\
   \hline
 \end{tabular}}
 \caption[Recommended LANDUSE.TBL values.]{Recommended changes to the LANDUSE.TBL file for simulations over first-year sea ice. Original LANDUSE.TBL file settings for snow/ice can be seen in Table \ref{tab:wrf:landusetbl}}
@@ -183,27 +179,28 @@ The idealized version of WRF was run twice, once with the default LANDUSE.TBL op
 
 \begin{table}[b!]
 \centering
-\footnotesize
+\scriptsize
+\hspace*{-0.5cm}
 \doublespacing
 {
 \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
 \hline
 \rowcolor[HTML]{F3F3F3} & & \textbf{Latent} & \textbf{Sensible} & \textbf{LW Down} & \textbf{LW Up} & \textbf{SW Down} & \textbf{SW Up} \\
 \hline 
-\cellcolor[HTML]{F3F3F3}& \cellcolor[HTML]{F3F3F3} \textbf{Original} & 13.52 &	47.1	& 2.48	& -1.23 & & \\
-\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Modified} & 12.13 & 	38.11	& -0.19	& 6.5 & & \\
-\cellcolor[HTML]{F3F3F3}\multirow{-3}{*}{\shortstack{\textbf{Winter} \\ \textbf{Cloudy}}} & \cellcolor[HTML]{F3F3F3} \textbf{Difference} & -1.39 &	-8.99 &	-2.67 &	7.73 & & \\
+\cellcolor[HTML]{F3F3F3}& \cellcolor[HTML]{F3F3F3} \textbf{Original} & 13.1 (10.3) & 43.5 (50.8) & 2.5 (243.3) & -1.3 (245.0) &  & \\
+\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Modified} & 11.7 (8.9) & 35.2 (44.8) & -0.2 (240.6) & 6.5 (252.7) & & \\
+\cellcolor[HTML]{F3F3F3}\multirow{-3}{*}{\shortstack{\textbf{Winter} \\ \textbf{Cloudy}}} & \cellcolor[HTML]{F3F3F3} \textbf{Change in Bias} & -1.4 & -8.3  & -2.7  & 7.7  & & \\
 \hline
-\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Original} & -0.2 &	-9.81 &	0.34 &	-19.14 &	50.2 &	33.21 \\
-\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Modified} & 1.6 &	-3.86 &	-54.83	& -11.69 &	111.15 &	81.96 \\
-\cellcolor[HTML]{F3F3F3} \multirow{-3}{*}{\shortstack{\textbf{Spring} \\ \textbf{Cloudy}}} & \cellcolor[HTML]{F3F3F3} \textbf{Difference} & 1.8 &	-5.95 &	55.17	& -7.45	& 60.95 &	48.75 \\
+\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Original} & -0.2 (-0.5) & -9.8 (-2.3) & 0.3 (240.8) & -19.1 (235.7) & 50.2 (210.7) & 33.2 (168.6) \\
+\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Modified} & 1.6 (1.6) & -4.2 (3.4) & -54.8 (185.6) & -11.7 (243.2) & 111.1 (271.6) & 82.0 (217.3) \\
+\cellcolor[HTML]{F3F3F3} \multirow{-3}{*}{\shortstack{\textbf{Spring} \\ \textbf{Cloudy}}} & \cellcolor[HTML]{F3F3F3} \textbf{Change in Bias} & 1.7 & -5.6 & 55.2 & -7.4 & 60.9 & 48.8 \\
 \hline
-\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Original} & 4.81	& 0.23	& -8.15 & 	-13.31	& 13.39	& 15.04 \\
-\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Modified} & 3.98	& -2.25 &	-36.17 &	-5.58 &	50.4 &	48.41 \\
-\cellcolor[HTML]{F3F3F3} \multirow{-3}{*}{\shortstack{\textbf{Spring} \\ \textbf{Clear}}} & \cellcolor[HTML]{F3F3F3} \textbf{Difference} \cellcolor[HTML]{F3F3F3} & -0.83 &	2.48	& 28.02	& -7.73 &	37.01	& 33.37 \\
+\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Original} & 5.0 (10.3) & 0.5 (15.5) & -8.2 (200.0) & -13.3 (254.5) & 13.4 (339.3) & 15.0 (271.4) \\
+\cellcolor[HTML]{F3F3F3} & \cellcolor[HTML]{F3F3F3} \textbf{Modified} & 4.2 (9.2) & -2.0 (11.0) & -36.2 (172.0) & -5.6 (262.2) & 50.4 (376.3) & 48.4 (304.8 ) \\
+\cellcolor[HTML]{F3F3F3} \multirow{-3}{*}{\shortstack{\textbf{Spring} \\ \textbf{Clear}}} & \cellcolor[HTML]{F3F3F3} \textbf{Change in Bias} \cellcolor[HTML]{F3F3F3} & -0.8 & 2.4 & 28.0 & -7.7  & 37.0 & 33.4 \\
 \hline
 \end{tabular}}
-\caption[Mean model bias for idealized WRF runs with modified LANDUSE.TBL values.]{Mean model biases ($Wm^{-2}$) for each idealized case study with both the modified (top of each case) and original (middle of each case) runs. Differences in biases (modified - original) are shown in the last row of each case labeled ``Difference." Positive differences indicate an increase in error and negative indicate a decrease in error when table modifications are implemented.}
+\caption[Mean model bias comparison for idealized WRF runs with modified LANDUSE.TBL values.]{Mean model biases (left) and mean flux (right, in parentheses) ($Wm^{-2}$) for each idealized case study with both the modified (top of each case) and original (middle of each case) runs. Differences in biases (modified - original) are shown in the last row of each case labeled ``Change in Bias." Positive differences indicate an increase in error and negative indicate a decrease in error when table modifications are implemented.}
 \label{tab:wrf:meanbias}
 \end{table}
 
@@ -222,8 +219,8 @@ The second case study period was a cloudy period in the spring. The ``Summer" se
 
 \begin{figure}[p]
     \centering
-    \vspace*{-3cm}
-    \includegraphics[width=1\linewidth]{figures/chapter6/case2_all_new.png}
+    \vspace*{-2cm}
+    \includegraphics[width=0.9\linewidth]{figures/chapter6/case2_all_new.png}
     \caption[Idealized Case 2]{Temperature (top), sensible and latent heat flux (second and third from top), upward and downward components of longwave radiation (fourth and fifth), and upward and downward components of shortwave radiation (sixth and seventh) for the model with original LANDUSE.TBL values (blue), the model with modified LANDUSE.TBL values (green), and the observations (black) from 2 May to 4 May.}
     \label{fig:c2}
 \end{figure}
@@ -234,8 +231,8 @@ The last case study period is from 22 May to 24 May, when the N-ICE field site e
 
 \begin{figure}[p]
     \centering
-        \vspace*{-3cm}
-    \includegraphics[width=1\linewidth]{figures/chapter6/case3_all_new.png}
+        \vspace*{-2cm}
+    \includegraphics[width=0.9\linewidth]{figures/chapter6/case3_all_new.png}
     \caption[Idealized Case 3]{Temperature (top), sensible and latent heat flux (second and third from top), upward and downward components of longwave radiation (fourth and fifth), and upward and downward components of shortwave radiation (sixth and seventh) for the model with original LANDUSE.TBL values (blue), the model with modified LANDUSE.TBL values (green), and the observations (black) from 22 May to 24 May.}
     \label{fig:c3}
 \end{figure}
@@ -247,8 +244,8 @@ Throughout the entire field expedition, the WRF offline calculation did a surpri
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=1\linewidth]{figures/chapter6/sensible_wrf.png}
-    \caption[Sensible heat flux observed at N-ICE and calculated from Polar WRF offline translated code.]{Sensible heat flux observed at N-ICE (black) and calculated from Polar WRF offline translated code (magenta), with the MEP equation (green) and with the bulk equation (blue). scatter plot (right) shows relationships between observed and calculated values shown in the time series (left).}
+    \includegraphics[width=1\linewidth]{figures/chapter6/shf_wrf_histo.png}
+    \caption[Sensible heat flux observed at N-ICE and calculated from Polar WRF offline translated code.]{Sensible heat flux observed at N-ICE (black) and calculated from Polar WRF offline translated code (magenta), with the MEP equation (green) and with the bulk equation (blue).}
     \label{fig:flux:sensible}
 \end{figure}
 
@@ -263,8 +260,8 @@ The WRF equation depends heavily on the friction velocity value, which is shown 
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=1\linewidth]{figures/chapter6/latent_wrf.png}
-    \caption[Latent heat flux observed at N-ICE and calculated from Polar WRF offline translated code.]{Latent heat flux observed at N-ICE (black) and calculated from Polar WRF offline translated code (magenta), with the MEP equation (green) and with the bulk equation (blue). Scatter plot (right) shows relationships between observed and calculated values shown in the time series (left). Note that the y-axis (observations) in the scatter plot is scaled from -5 to 5 $Wm^{-2}$ to capture the low values observed at N-ICE.}
+    \includegraphics[width=1\linewidth]{figures/chapter6/lhf_wrf_histo.png}
+    \caption[Latent heat flux observed at N-ICE and calculated from Polar WRF offline translated code.]{Latent heat flux observed at N-ICE (black) and calculated from Polar WRF offline translated code (magenta), with the MEP equation (green) and with the bulk equation (blue).}
     \label{fig:flux:latent}
 \end{figure}
 

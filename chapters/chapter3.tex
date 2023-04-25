@@ -19,7 +19,6 @@ In this modeling study, observations from the N-ICE were used to evaluate the Po
 Details about the N-ICE field campaign can be found in Chapter 2. Most notable for the analysis presented here are the atmospheric radiation measurements, taken by Kipp and Zonen (CMP22 and CGR4) radiometers mounted 1 to 1.2 $m$ above the ground. \citet{granskog:2015} and \citet{walden:2017} include a complete analysis of the radiative fluxes during N-ICE, which includes a description of how surface temperatures were calculated. \citet{walden:2017} also showed that the radiative fluxes during N-ICE were primarily influenced by wind, advection, and cloud cover. 
 
 \subsection{Model Setup}
-
 The WRF model version 4.1.4 was run with polar optimizations created by researchers at The Ohio State University. WRF with polar optimizations is often referred to as Polar WRF. WRF is a mesoscale weather model developed with both numerical weather prediction and research applications in mind. It is maintained by the NCAR's Mesoscale and Microscale Meteorology Laboratory (MMM). As of 2021, WRF had over 57,800 registered users. The model allows users to select many options, such as domain size, temporal and spatial resolution, and input datasets \citep{skamarock:2019}.
 
 \begin{figure}[h]
@@ -110,6 +109,8 @@ The Goddard (G) scheme \citep{tao:2000} and WRF Single-Moment 5-Class (5) scheme
 \section{Results}
 Atmospheric conditions at the grid cell containing the ship were selected from the model output. Time series of the pressure, temperature, sensible and latent heat fluxes, components of longwave and shortwave flux, and cloud fraction in the model grid cell at the ship location can be seen in Figure \ref{fig:wrf_all}. While it is difficult to see fine details in these panels, the P3-YSU scheme stands out during both the winter and spring, with particularly low values of temperature, upward longwave flux, and downward longwave flux. Additionally, cloud fraction values are greatly varied between model runs, and are often not in agreement with the observations. Further analysis of each variable is included in the following subsections.
 
+The sea level pressure, shown in the top panel of Figure \ref{fig:wrf_all}, shows several pressure drops in the winter associated with storms passing over the area. Many of the model simulations predict the pressure patterns accurately. The first period of low pressure, from 3 February to 8 February, was a strong storm \citep{cohen:2017} that the model accurately predicted the onset of, but no simulations predicted how long the storm persisted over the area. Other than the end of this storm period, the modeled pressure compares well with the measurements. In the spring and summer, when strong synoptic-scale storms are less frequent, the model gets the pressure, and likely the larger-scale synoptic setup correct. 
+
 Eq. \ref{eq:modbias} was used to calculate mean model biases from the time series for skin temperature ($K$), latent heat flux ($Wm^{-2}$), sensible heat flux ($Wm^{-2}$), net longwave flux ($Q_{sw}$, $Wm^{-2}$, Eq. \ref{eq:netlwflux}), and net shortwave flux ($Q_{sw}$, $Wm^{-2}$, Eq. \ref{eq:netswflux}) and are shown in Table \ref{tab:meanbias} for winter (top) and spring (bottom). In this equation, $y_{mod}$ is the modeled value and $y_{obs}$ is the observed value.
  
 \begin{equation}\label{eq:modbias}
@@ -137,32 +138,72 @@ Q_{sw} = Q_{sw \downarrow} - Q_{sw \uparrow}
 \rowcolor[HTML]{F3F3F3} & \multicolumn{5}{ c|}{\textbf{Winter}} \\
 \rowcolor[HTML]{F3F3F3} & \textbf{Temperature} & \textbf{Latent Heat} & \textbf{Sensible Heat} & \textbf{Net LW} & \textbf{Net SW} \\
 \hline
-\rowcolor[HTML]{F0F8E6}\textbf{G-YSU} & 0.3 & -1.0 & -23.4 & 2.9 &  \\
-\rowcolor[HTML]{E0EDF4}\textbf{G-MYJ} & -0.1 & -0.3 & -22.6 & 4.4 & \\
-\rowcolor[HTML]{FEEEF5}\textbf{G-MYNN} & 0.2 & -1.3 & -21.0 & 5.1 & \\
-\rowcolor[HTML]{E0EDF4}\textbf{5-MYJ} & 0.7 & -0.8 & -23.0 & 3.4 & \\
-\rowcolor[HTML]{FEEEF5}\textbf{5-MYNN} & 2.0 & -1.2 & -18.5 & 8.5 & \\
-\rowcolor[HTML]{F0F8E6}\textbf{P3-YSU} & -7.5 & -1.1 & -25.0 & -2.5 & \\
-\rowcolor[HTML]{E0EDF4}\textbf{P3-MYJ} & 3.1 & 0.4 & -17.2 & 12.9 & \\
-\rowcolor[HTML]{E0EDF4}\textbf{2-MYJ} & 2.2 & -0.1 & -18.3 & 10.2 & \\
-\rowcolor[HTML]{FEEEF5}\textbf{2-MYNN} & 4.5 & 0.1 & -17.1 & 12.0 & \\
+\rowcolor[HTML]{F0F8E6}\textbf{G-YSU}  & 0.3 (-24.7) & 2.5 (1.7) & 4.1 (13.7) & 2.9 (-26.8) & \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{G-MYJ}  & -0.1 (-25.1) & 1.9 (1.1) & 3.4 (13.0) & 4.4 (-25.3) & \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{G-MYNN} & 0.2 (-24.8) & 2.8 (2.1) & 1.8 (11.4) & 5.1 (-24.5) & \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{5-MYJ} & 0.7 (-24.3) & 2.3 (1.6) & 3.7 (13.4) & 3.4 (-26.3) & \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{5-MYNN}  & 2.0 (-23.0) & 2.7 (2.0) & -0.8 (8.9) & 8.5 (-21.2) & \\ 
+\rowcolor[HTML]{F0F8E6}\textbf{P3-YSU} & -7.5 (-32.5) & 2.6 (1.8) & 5.8 (15.4) & -2.5 (-32.2) & \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{P3-MYJ} & 3.1 (-21.9) & 1.1 (0.4) & -2.0 (7.6) & 12.9 (-16.8) & \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{2-MYJ} & 2.2 (-22.8) & 1.6 (0.8) & -0.9 (8.7) & 10.2 (-19.5) & \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{2-MYNN} & 4.5 (-20.5) & 1.5 (0.7) & -2.1 (7.5) & 12.0 (-17.7) & \\ 
+
 \hline
 \rowcolor[HTML]{F3F3F3} & \multicolumn{5}{c|}{\textbf{Spring}} \\
 \rowcolor[HTML]{F3F3F3} & \textbf{Temperature} & \textbf{Latent Heat} & \textbf{Sensible Heat} & \textbf{Net LW} & \textbf{Net SW} \\
 \hline
-\rowcolor[HTML]{F0F8E6}\textbf{G-YSU} & -2.6 & 2.3 & 2.2 & -33.0 & 2.2 \\
-\rowcolor[HTML]{E0EDF4}\textbf{G-MYJ} & -2.4 & 2.0 & 2.0 & -32.0 & 2.0 \\
-\rowcolor[HTML]{FEEEF5}\textbf{G-MYNN} & -1.8 & 2.7 & 4.1 & -27.1 & 4.1 \\
-\rowcolor[HTML]{E0EDF4}\textbf{5-MYJ} & -2.0 & 2.7 & 4.0 & -29.2 & 4.0 \\
-\rowcolor[HTML]{FEEEF5}\textbf{5-MYNN} & -0.7 & 3.3 & 6.3 & -22.0 & 6.3 \\
-\rowcolor[HTML]{F0F8E6}\textbf{P3-YSU} & -9.4 & 3.3 & 6.1 & -32.2 & 6.1 \\
-\rowcolor[HTML]{E0EDF4}\textbf{P3-MYJ} & -2.4 & 2.0 & 2.0 & -32.1 & 2.0 \\
-\rowcolor[HTML]{E0EDF4}\textbf{2-MYJ} & -0.1 & 4.9 & 7.5 & -13.7 & 7.5 \\ 
-\rowcolor[HTML]{FEEEF5}\textbf{2-MYNN} & 2.2 & 6.5 & 10.3 & -3.3 & 10.3\\
+\rowcolor[HTML]{F0F8E6}\textbf{G-YSU}  & -2.6 (-10.7) & -1.7 (-2.0) & 11.3 (4.1) & -34.7 (-57.4) & 10.7 (54.4) \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{G-MYJ}  & -2.4 (-10.5) & -1.3 (-1.6) & 11.5 (4.4) & -33.7 (-56.3) & 9.2 (52.9) \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{G-MYNN}  & -1.7 (-9.9) & -2.1 (-2.5) & 9.4 (2.2) & -28.5 (-51.2) & 7.8 (51.5) \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{5-MYJ}  & -1.9 (-10.0) & -2.1 (-2.5) & 9.3 (2.2) & -30.3 (-53.0) & 10.6 (54.3) \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{5-MYNN}  & -0.6 (-8.7) & -2.8 (-3.1) & 6.9 (-0.3) & -22.5 (-45.2) & 6.4 (50.1) \\ 
+\rowcolor[HTML]{F0F8E6}\textbf{P3-YSU}  & -9.2 (-17.3) & -2.8 (-3.1) & 6.8 (-0.3) & -32.4 (-55.0) & 10.0 (53.7) \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{P3-MYJ}  & -2.4 (-10.5) & -1.3 (-1.6) & 11.5 (4.4) & -33.7 (-56.3) & 9.2 (52.9) \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{2-MYJ}  & -0.1 (-8.1) & -4.4 (-4.8) & 5.5 (-1.6) & -14.0 (-36.6) & 1.4 (45.1) \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{2-MYNN}  & 2.1 (-6.0) & -5.8 (-6.1) & 3.4 (-3.8) & -5.0 (-27.6) & -0.4 (43.2) \\ 
 \hline
 \end{tabular}
-\caption[Polar WRF mean model bias for temperature, latent heat flux, sensible heat flux, net longwave flux, and net shortwave flux.]{Mean model bias for temperature ($K$), latent heat flux ($Wm^{-2}$), sensible heat flux ($Wm^{-2}$), net longwave flux (Net LW) ($Wm^{-2}$), and net shortwave flux (Net SW) ($Wm^{-2}$). Acronyms in the left-hand column represent the CM and PBL schemes and are defined in Table \ref{tab:schemes}. Rows are ordered by CM scheme and colored by PBL scheme for ease of use.}
+\caption[Polar WRF mean model bias and mean modeled flux for temperature, latent heat flux, sensible heat flux, net longwave flux, and net shortwave flux.]{Mean model bias (left) and mean model flux (right, in parentheses) for temperature ($K$), latent heat flux ($Wm^{-2}$), sensible heat flux ($Wm^{-2}$), net longwave flux (Net LW) ($Wm^{-2}$), and net shortwave flux (Net SW) ($Wm^{-2}$). Acronyms in the left-hand column represent the CM and PBL schemes and are defined in Table \ref{tab:schemes}. Rows are ordered by CM scheme and colored by PBL scheme for ease of use.}
 \label{tab:meanbias}
+\end{table*}}
+
+\begin{table*}[p]
+\center
+\centering
+\footnotesize
+\doublespacing
+{
+\begin{tabular}{| l | c | c | c | c | c |}
+\hline
+\rowcolor[HTML]{F3F3F3} & \multicolumn{5}{ c|}{\textbf{Winter}} \\
+\rowcolor[HTML]{F3F3F3} & \textbf{Temperature} & \textbf{Latent Heat} & \textbf{Sensible Heat} & \textbf{Net LW} & \textbf{Net SW} \\
+\hline
+\rowcolor[HTML]{F0F8E6}\textbf{G-YSU} & 4.4 & 3.7 & 17.6 & 15.9 & \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{G-MYJ}  & 4.3 & 3.7 & 18.1 & 16.6 & \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{G-MYNN} & 4.3 & 3.5 & 16.4 & 17.5 & \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{5-MYJ}  & 4.3 & 3.6 & 17.7 & 15.8 & \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{5-MYNN}  & 5.0 & 3.6 & 18.3 & 19.8 & \\ 
+\rowcolor[HTML]{F0F8E6}\textbf{P3-YSU}  & 10.3 & 3.2 & 19.3 & 22.2 & \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{P3-MYJ}  & 4.8 & 3.2 & 16.2 & 17.1 & \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{2-MYJ} & 4.5 & 3.0 & 15.9 & 16.8 & \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{2-MYNN}  & 5.9 & 3.1 & 15.8 & 17.7 & \\ 
+\hline
+\rowcolor[HTML]{F3F3F3} & \multicolumn{5}{c|}{\textbf{Spring}} \\
+\rowcolor[HTML]{F3F3F3} & \textbf{Temperature} & \textbf{Latent Heat} & \textbf{Sensible Heat} & \textbf{Net LW} & \textbf{Net SW} \\
+\hline
+\rowcolor[HTML]{F0F8E6}\textbf{G-YSU}  & 3.4 & 3.7 & 13.3 & 37.4 & 20.6 \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{G-MYJ} & 3.3 & 3.6 & 13.8 & 37.3 & 21.1 \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{G-MYNN} & 2.9 & 4.1 & 11.9 & 33.8 & 20.7 \\  
+\rowcolor[HTML]{E0EDF4}\textbf{5-MYJ} & 2.8 & 3.9 & 13.0 & 34.6 & 18.7 \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{5-MYNN} & 3.1 & 4.3 & 10.8 & 28.4 & 16.9 \\ 
+\rowcolor[HTML]{F0F8E6}\textbf{P3-YSU} & 9.5 & 3.6 & 12.9 & 37.2 & 20.3 \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{P3-MYJ}  & 3.3 & 3.6 & 13.8 & 37.3 & 21.1 \\ 
+\rowcolor[HTML]{E0EDF4}\textbf{2-MYJ} & 2.6 & 5.6 & 10.9 & 22.1 & 17.5 \\ 
+\rowcolor[HTML]{FEEEF5}\textbf{2-MYNN}  & 2.9 & 6.4 & 8.7 & 18.1 & 15.0 \\ 
+\hline
+\end{tabular}
+\caption[Polar WRF mean absolute error for temperature, latent heat flux, sensible heat flux, net longwave flux, and net shortwave flux.]{Mean model absolute error for temperature ($K$), latent heat flux ($Wm^{-2}$), sensible heat flux ($Wm^{-2}$), net longwave flux (Net LW) ($Wm^{-2}$), and net shortwave flux (Net SW) ($Wm^{-2}$). Acronyms in the left-hand column represent the CM and PBL schemes and are defined in Table \ref{tab:schemes}. Rows are ordered by CM scheme and colored by PBL scheme for ease of use.}
+\label{tab:meanabserror}
 \end{table*}}
 
 \subsection{Skin Temperature}
@@ -175,10 +216,10 @@ G-MYJ had the smallest mean temperature bias in winter. For spring, 2-MYJ had th
     \label{fig:wrf_tsk}
 \end{figure}
 
-Some of these disagreements between the model and measurements can be attributed to inaccurate surface albedo and a lack of cloudiness. The model simulated the surface albedo to be around 0.2 less than the measured surface albedo (0.6 compared to 0.8 measured at N-ICE). The model surface temperature reaches the freezing point earlier than the observations. The transition season is when the model had the most difficulty in simulating the skin temperature, but in the summer, when the temperature reaches freezing, all of the model simulations agree well with the observations. 
+Some of these disagreements between the model and measurements can be attributed to inaccurate surface albedo and a lack of cloudiness. The model simulated the surface albedo to be around 0.2 less than the measured surface albedo for the entire campaign (0.6 compared to 0.8 measured at N-ICE). This is likely due to the default albedo of the model being set too low. The model surface temperature reaches the freezing point earlier than the observations. The transition season is when the model had the most difficulty in simulating the skin temperature, but in the summer, when the temperature reaches freezing, all of the model simulations agree well with the observations. 
 
 \subsection{Longwave and Shortwave Fluxes}
-In the winter, P3-YSU had the lowest bias in longwave flux. All other model simulations produced a positive bias in the winter. This suggests that the low bias in longwave flux is likely due to the strong negative temperature bias compensating for the overestimation of longwave flux occurring within the model. 
+In the winter, P3-YSU had the lowest bias in longwave flux. All other model simulations produced a positive bias in the winter. This suggests that the low bias in longwave flux is likely due to the strong negative temperature bias compensating for the overestimation of longwave flux occurring within the model. These fluxes often have compensating errors, too, as the bias in the upward component could compensate for a bias in the downward component. The P3-YSU net longwave bias in the winter in an example of this. The mean bias (Table \ref{tab:meanbias} is quite low, with an overall bias of -2.5 $Wm^{-2}$. However, the mean absolute error (Table \ref{tab:meanabserror}) is the largest of any simulations, indicating that there is a compensating underestimation in the components of longwave flux. This can also be seen in the time series in Figure \ref{fig:wrf_all} panels 5 and 6, when the P3-YSU scheme clearly underestimates both the upward and downward components of longwave radiation. 
 
   \begin{figure}[t]
     \centering
@@ -187,11 +228,11 @@ In the winter, P3-YSU had the lowest bias in longwave flux. All other model simu
     \label{fig:wrf_netlw}
 \end{figure}
 
- In winter, the distributions shown in Figure \ref{fig:wrf_netlw} show two peaks in the observations (black bars). One peak shows a maximum between -60 and -40 $Wm^{-2}$ and corresponds to clear sky conditions. These conditions are most accurately modeled by G-YSU. This is further corroborated by the low biases seen in Table \ref{tab:meanbias} and Table C.1 in Appendix C. A second peak occurs around -10 $Wm^{-2}$ and is related to cloudy conditions, which is most accurately captured by 5-MYJ. Overall, the lowest net longwave biases were seen with the G-YSU and P3-YSU simulations, indicating that the YSU boundary layer scheme is producing the best surface-layer temperature structure during the winter at N-ICE. 
+ In winter, the distributions shown in Figure \ref{fig:wrf_netlw} show two peaks in the observations (black bars). One peak shows a maximum between -60 and -40 $Wm^{-2}$ and corresponds to clear sky conditions. These conditions are most accurately modeled by G-YSU. This is further corroborated by the low biases seen in Table \ref{tab:meanbias} and low mean absolute error in Table \ref{tab:meanabserror}. A second peak occurs around -10 $Wm^{-2}$ and is related to cloudy conditions, which is most accurately captured by 5-MYJ. Overall, the lowest net longwave biases were seen with the G-YSU and P3-YSU simulations, indicating that the YSU boundary layer scheme is producing the best surface-layer temperature structure during the winter at N-ICE. 
  
  Spring and summer longwave flux values were more largely negative in all model runs compared to the measurements. This indicates that the surface was losing more longwave flux than it was gaining, which is likely due to clouds in the models being either too cold or thin to produce the downward longwave flux required to balance out the amount of longwave being lost from the surface. In the spring, the downward longwave is clearly dominated by the CM schemes, as the schemes show vastly different results. The WRF 2-Moment CM scheme has the lowest net longwave biases in the spring by almost 20 $Wm^{-2}$ in some cases (Table \ref{tab:meanbias}). The 2-MYNN scheme has the lowest mean net longwave bias for spring, which indicates that this scheme may be producing clouds closest to what was actually observed. While the 2-MYNN does well with the spring and summer net longwave flux, this simulation had the largest biases in the net shortwave flux, which indicates that there may be some compensating errors in the turbulent fluxes.
 
-\begin{figure}[h!]
+\begin{figure}[t]
     \centering
     \includegraphics[width=1\linewidth]{figures/chapter3/WRF_NetSW_Histo.png}
     \caption[Polar WRF simulated net shortwave flux histograms.]{Net shortwave flux at the surface for the entire observational period (top), winter (middle), and spring (bottom) for each of the Polar WRF runs. Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
@@ -202,7 +243,7 @@ Net shortwave flux (Figure \ref{fig:wrf_netsw}) is only shown and calculated for
 
 The observations display two peaks. A second peak, which is not well replicated in the model distributions, can be seen in the measurements between 10 and 20 $Wm^{-2}$. This is likely a result of the low modeled albedo. The low sun angle, in combination with high early spring albedo, could result in these low net SW values. Shortwave flux was best represented in the G-MYJ and P3-MYJ schemes. These simulations also had the largest net longwave biases, so errors in the shortwave (and the sensible and latent heat fluxes) are compensating for the earth's radiation balance and are attempting to compensate for errors in other variables. Additionally, upward shortwave flux was hindered by an unreasonably low surface albedo in all model simulations.
 
-\begin{figure}[h!]
+\begin{figure}[t]
     \centering \hspace*{-0.5cm}
     \includegraphics[width=1.1\linewidth]{figures/chapter3/WRF_Clouds.png}
     \caption[Polar WRF simulated cloud fraction.]{Cloud fraction from each Polar WRF run and the measurements in winter (top) and spring (bottom). Cloud cover is indicated by color, with yellows representing more cloud cover and purples less. Dark purple represents no cloud cover. Areas of white indicate no measurements. Polar WRF simulations are indicated on the left side of the figure by acronyms defined in Table \ref{tab:schemes} and observations represent was what actually observed at N-ICE.}
@@ -217,7 +258,7 @@ The WRF simulations during spring show a significant underestimation of cloud co
 
 \subsection{Turbulent Fluxes}
 
-\begin{figure}[h]
+\begin{figure}[t]
     \centering
     \includegraphics[width=1\linewidth]{figures/chapter3/WRF_LHF_Histo.png}
     \caption[Polar WRF simulated latent heat flux histograms.]{Latent heat flux for the entire observational period (top), winter (middle), and spring (bottom) for each of the Polar WRF runs. Measurements are shown in black and each model simulation is a different color, identified by the abbreviations defined in Table \ref{tab:schemes}.}
@@ -235,6 +276,8 @@ Figures \ref{fig:wrf_hlf} and \ref{fig:wrf_shf} show the latent and sensible hea
 
 In the spring, the calculations of the latent heat flux were similar in all the model simulations but varied more largely than the measurements. The measurements peaked at zero with limited spread, slightly favoring the negative values (melting, sublimation, or evaporation). All the model simulations, however, overestimated the amount of melting/sublimation/evaporation that was occurring by overestimating the amount of negative latent heat flux. 
 
+While there is the possibility of measurement error, the large disagreement in latent heat flux values may be a result of the model's inability to resolve sub-grid level ice surface heterogeneities. The land surface type at the ship location was always sea ice, but this does not account for the potential of open leads on smaller scales close to the ship. These open leads could be a moisture source that increases water vapor advecting over the ship location that is not resolved in the model, reducing the ability for latent heat exchange. The impact of the sub-grid sea ice heterogeneities is a necessary topic of further study and a potential source of error in the modeled turbulent fluxes and surface albedo. 
+
 In the winter, the calculation of sensible heat flux is incorrect in all of the model simulations and is most influenced by the PBL scheme. The YSU PBL scheme shows a peak between 0 and 10 $Wm^{-2}$, but a smaller spread than the measurements, indicating that this scheme is not accurately representing the near-surface temperature structure. The MYJ PBL scheme, however, has the opposite problem, with a larger range of values. Neither scheme accurately represents the distribution of the measurements, which is less steep at positive flux values. The runs using the MYNN PBL scheme had the lowest flux bias values.
 
 The sensible heat fluxes in spring peak just below 0 $Wm^{-2}$ in the measurements, but were slightly positive in the model simulations, indicating that the model predicted the atmosphere was warmer than the surface and flux was going into the surface. The MYJ PBL scheme predicted a small secondary peak slightly negative that was also captured in the measurements, but the shape, value, and magnitude of this peak were incorrectly simulated by the model. The sensible heat flux calculations by the MYJ PBL scheme compare well to the measurements; the MYNN PBL scheme performs worse. The measurements and the 2-MYNN simulation both show a large spread with slightly more negative sensible heat fluxes than the other simulations. This indicates that there is a greater flux out of the surface in the 2-MYNN scheme and in the measurements, as the surface temperature is less than the air temperature.
@@ -250,7 +293,9 @@ The sensible heat fluxes in spring peak just below 0 $Wm^{-2}$ in the measuremen
     \label{fig:wrf_case1}
 \end{figure}
 
-A cold front passed through the ship location just after midnight on 5 February, bringing a temperature drop of approximately 25$^{\circ}C$. \citet{cohen:2017} indicated this was the second major storm that passed over the ship during the observation period. The model simulations do not accurately capture the timing or magnitude of the cold front. Prior to the frontal passage, observed temperatures were warmer than those forecasted by WRF (top panel, Figure \ref{fig:wrf_case1}). Additionally, after the front passes, the modeled temperature is, at times, around 10$^{\circ}C$ higher than the measured temperature. This can also be seen in both components of the longwave flux (Figure \ref{fig:wrf_case1}, 5th and 6th panel from the top). P3-YSU performed particularly poorly during this period; this run had the lowest pre-frontal temperature and took the longest for temperatures to fall after the passage of the front.
+A cold front passed through the ship location just after midnight on 5 February, bringing a temperature drop of approximately 25$^{\circ}C$. \citet{cohen:2017} indicated this was during the second major storm that passed over the ship during the observation period. This storm also brought the most snowfall observed during the winter \citep{cohen:2017}. The model simulations do not accurately capture the timing or magnitude of the temperature change associated with the cold front. The pressure, however, in many of the model simulations indicates that the synoptic setup was modeled accurately. All simulations, with the exception of the P3-YSU, produced accurate sea level pressure in the days 24-hours leading up to the temperature drop (Figure \ref{fig:wrf_case1}, top panel), indicating the larger-scale storm system is moving into the area at the right time, but the fluxes and surface temperature are lagged behind the observations.
+
+Prior to the frontal passage, observed temperatures were warmer than those forecasted by WRF (top panel, Figure \ref{fig:wrf_case1}). Additionally, after the front passes, the modeled temperature is, at times, around 10$^{\circ}C$ higher than the measured temperature. This can also be seen in both components of the longwave flux (Figure \ref{fig:wrf_case1}, 5th and 6th panel from the top). P3-YSU performed particularly poorly during this period; this run had the lowest pre-frontal temperature and took the longest for temperatures to fall after the passage of the front. \citet{walden:2017} shows the precipitable water vapor in Figure 11 panel c. Precipitable water vapor reaches a peak during the passage of the cold front, coinciding with the sharp decrease in temperature, and drops shortly after. The delayed longwave flux and temperature response in the model is likely due to an inaccuracy in the amount of water vapor within the column. The decrease in precipitable water vapor was likely delayed and less sharp in the model output, resulting in this delayed response in temperature, latent heat flux, and components of longwave radiation. 
 
 A possible explanation for the P3-YSU scheme performing so poorly with temperature and longwave flux is the lack of cloud cover before the front. This scheme consistently produced close to zero cloud cover ahead of the front. While the observations did not see complete cloud cover until just after the front passage on 5 February at 12:00 (indicated by gray shading in Figure \ref{fig:wrf_case1}), the ship still experienced some cloud cover, at times approaching 100$\%$ over the six-hour averaging period. The P3-YSU scheme did not produce any cloud cover ahead of the front, and cloud cover reduced quickly after the frontal passage, which was not seen in the measurements. 
 
@@ -264,7 +309,7 @@ The two simulations using the Morrison 2-Moment CM scheme performed the best in 
         \vspace*{-2.5cm}
     \hspace*{-0.75cm} 
     \includegraphics[width=1.1\linewidth]{figures/chapter3/wrf_case2.png}
-    \caption[Polar WRF Case 3 - Spring clear-sky (23 May 2015) time series]{6-hourly values for WRF modeled output (rainbow, acronyms in legend defined in Table \ref{tab:schemes}) and observations (black) for sea level pressure, temperature, sensible heat flux, latent heat flux, downward longwave flux, upward longwave flux, downward shortwave flux, upward shortwave flux, and cloud fraction during the spring clear-sky period from 22 May to 25 May 2015.}
+    \caption[Polar WRF Case 2 - Spring clear-sky (23 May 2015) time series]{6-hourly values for WRF modeled output (rainbow, acronyms in legend defined in Table \ref{tab:schemes}) and observations (black) for sea level pressure, temperature, sensible heat flux, latent heat flux, downward longwave flux, upward longwave flux, downward shortwave flux, upward shortwave flux, and cloud fraction during the spring clear-sky period from 22 May to 25 May 2015.}
     \label{fig:wrf_case2}
 \end{figure}
 
@@ -272,12 +317,14 @@ Clouds occurred nearly continuously during the spring at N-ICE, however, the onl
 
 Model runs using the Goddard CM scheme performed the best during the clear-sky period, with latent heat fluxes close to zero and longwave radiative fluxes closest to the measurements. These schemes also had the most accurate surface temperatures.
 
+This period immediately followed a storm period. In the previous case study, the model accurately predicted the onset of the storm but did not predict the strength or duration well. While this storm period was weak, it is possible that the model in some of the simulations did not accurately predict the end of that storm period, resulting in an earlier onset of clear conditions as is seen in many of the model runs.
+
 \section{Conclusions}
 In this study, Polar WRF was used to simulate surface fluxes over first-year sea ice from January to June 2015. Model results were compared to observations taken during the N-ICE field campaign. A collection of CM and PBL schemes were selected based on a literature survey of previous modeling studies both in the Arctic and elsewhere. 
 
 The schemes using the Morrison 2-Moment CM had the lowest biases in latent heat flux in the winter overall and performed best in the winter cold front case study. However, the overall temperature biases from these schemes were the largest in the winter, indicating that these schemes perform best under conditions like those seen in the winter case study, when the model did accurately forecast temperatures. The P3 CM scheme performed the worst in the winter, with the highest biases in both longwave flux, sensible heat flux, and temperature. 
 
-In the spring, latent and sensible heat fluxes produced by simulations using the Morrison 2-Moment scheme had the largest biases. Additionally, schemes using the MYNN PBL scheme had larger biases than simulations with other PBL schemes, generally producing a larger sensible heat flux than was observed. This indicates that, particularly in the spring, the MYNN PBL scheme is not producing the correct near-surface temperature structure. 
+In the spring, latent and sensible heat fluxes produced by simulations using the Morrison 2-Moment scheme had the largest biases. Additionally, schemes using the MYNN PBL scheme had larger biases than simulations with other PBL schemes, generally producing a larger sensible heat flux than was observed. This indicates that, particularly in the spring, the MYNN PBL scheme is not producing the correct near-surface temperature structure. Some model error can be attributed to an oversimplification of the ice surface, as the 3 $km$ by 3 $km$ grid size in the model was not small enough to resolve some open leads and melt ponds. 
 
 The time of year and the near-surface atmospheric temperature structure are important to consider when selecting CM and PBL schemes. In the winter when surface inversions are more likely to be present, the MYNN scheme produces the most accurate sensible heat flux estimations. However, the MYJ scheme appears to perform best for the latent heat flux and temperature. In the spring, when mixed-phase clouds are more common and the surface is starting to melt, the MYJ scheme still excels at estimating the latent heat flux and has some of the lowest biases. 
 
